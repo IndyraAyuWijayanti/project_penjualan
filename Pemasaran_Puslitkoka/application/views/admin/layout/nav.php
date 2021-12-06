@@ -124,7 +124,16 @@
 
 
 
-          
+            <!-- MENU TRANSAKSI -->
+          <li class="nav-item">
+            <a href="<?= base_url('admin/transaksi') ?>" class="nav-link">
+              <i class="nav-icon fas fa-check text-aqua"></i>
+              <p>TRANSAKSI</p>
+            </a>
+          </li>
+
+
+        
 
          
           
