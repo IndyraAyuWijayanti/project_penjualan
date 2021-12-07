@@ -94,6 +94,7 @@ class Pelanggan extends CI_Controller{
             $data = array(  
                 'id_user'                =>  $this->session->userdata('id_user'),
               
+                'id_pelanggan'           =>  $i->post('id_pelanggan'),
                 'id_kategoripelanggan'   =>  $i->post('id_kategoripelanggan'),
                 'nama_pelanggan'         =>  $i->post('nama_pelanggan'),
                 'no_identitas'           =>  $i->post('no_identitas'),
@@ -184,26 +185,23 @@ class Pelanggan extends CI_Controller{
            $slug_pelanggan = url_title($this->input->post('nama_pelanggan').'-'.$this->input->post('no_identitas'),'dash',TRUE);
             $data = array(  
                 'id_user'                =>  $this->session->userdata('id_user'),
-               
+                'id_pelanggan'           =>  $id_pelanggan,
                'id_kategoripelanggan'   =>  $i->post('id_kategoripelanggan'),
-               'nama_pelanggan'         =>  $i->post('nama_pelanggan')
-               // 'no_identitas'           =>  $i->post('no_identitas'),
-             //   'nama_perusahaan'        =>  $i->post('nama_perusahaan'),
-              //  'hp'                     =>  $i->post('hp'),
-              //  'telepon_kantor'         =>  $i->post('telepon_kantor'),
-             //   'no_rekening'            =>  $i->post('no_rekening'),
-             //   'alamat'                 =>  $i->post('alamat'),
-              //  'kota'                   =>  $i->post('kota'),
-              //  'provinsi'               =>  $i->post('provinsi'),
-            //    'keterangan'             =>  $i->post('keterangan'),
-             //   'iupb'                   =>  $upload_gambar['upload_data']['file_name'],
-             //   'nib'                    =>  $upload_gambar['upload_data']['file_name'],
-              //  'siup'                   =>  $upload_gambar['upload_data']['file_name'],
-              //  'slug_pelanggan'         =>  $slug_pelanggan
-                
+               'nama_pelanggan'         =>  $i->post('nama_pelanggan'),
+               'no_identitas'           =>  $i->post('no_identitas'),
+               'nama_perusahaan'        =>  $i->post('nama_perusahaan'),
+               'hp'                     =>  $i->post('hp'),
+               'telepon_kantor'         =>  $i->post('telepon_kantor'),
+               'no_rekening'            =>  $i->post('no_rekening'),
+               'alamat'                 =>  $i->post('alamat'),
+               'kota'                   =>  $i->post('kota'),
+               'provinsi'               =>  $i->post('provinsi'),
+               'keterangan'             =>  $i->post('keterangan'),
+               'iupb'                   =>  $upload_gambar['upload_data']['file_name'],
+               'nib'                    =>  $upload_gambar['upload_data']['file_name'],
+               'siup'                   =>  $upload_gambar['upload_data']['file_name'],
+               'slug_pelanggan'         =>  $slug_pelanggan
                 );
-            // var_dump($data);
-            // die;
             $this->pelanggan_model->edit($data);
             $this->session->set_flashdata('sukses', 'Data telah diedit dengan gambar');
             redirect(base_url('admin/pelanggan'),'refresh');
@@ -213,25 +211,23 @@ class Pelanggan extends CI_Controller{
               $slug_pelanggan = url_title($this->input->post('nama_pelanggan').'-'.$this->input->post('no_identitas'),'dash',TRUE);
               $data = array(  
                 'id_user'                =>  $this->session->userdata('id_user'),
-           
+                'id_pelanggan'           =>  $id_pelanggan,
                'id_kategoripelanggan'   =>  $i->post('id_kategoripelanggan'),
-               'nama_pelanggan'         =>  $i->post('nama_pelanggan')
-               // 'no_identitas'           =>  $i->post('no_identitas'),
-               // 'nama_perusahaan'        =>  $i->post('nama_perusahaan'),
-               // 'hp'                     =>  $i->post('hp'),
-               // 'telepon_kantor'         =>  $i->post('telepon_kantor'),
-              //  'no_rekening'            =>  $i->post('no_rekening'),
-              //  'alamat'                 =>  $i->post('alamat'),
-              //  'kota'                   =>  $i->post('kota'),
-              //  'provinsi'               =>  $i->post('provinsi'),
-              //  'keterangan'             =>  $i->post('keterangan')
-                //'iupb'                   =>  $upload_gambar['upload_data']['file_name'],
-               // 'nib'                    =>  $upload_gambar['upload_data']['file_name'],
-                //'siup'                   =>  $upload_gambar['upload_data']['file_name'],
+               'nama_pelanggan'         =>  $i->post('nama_pelanggan'),
+               'no_identitas'           =>  $i->post('no_identitas'),
+               'nama_perusahaan'        =>  $i->post('nama_perusahaan'),
+               'hp'                     =>  $i->post('hp'),
+               'telepon_kantor'         =>  $i->post('telepon_kantor'),
+               'no_rekening'            =>  $i->post('no_rekening'),
+               'alamat'                 =>  $i->post('alamat'),
+               'kota'                   =>  $i->post('kota'),
+               'provinsi'               =>  $i->post('provinsi'),
+               'keterangan'             =>  $i->post('keterangan')
+            //     'iupb'                   =>  $upload_gambar['upload_data']['file_name'],
+            //    'nib'                    =>  $upload_gambar['upload_data']['file_name'],
+            //     'siup'                   =>  $upload_gambar['upload_data']['file_name'],
                
-                        );
-            // var_dump($data);
-            // die;
+                );
             $this->pelanggan_model->edit($data);
             $this->session->set_flashdata('sukses', 'Data telah diedit tanpa gambar');
             redirect(base_url('admin/pelanggan'),'refresh');
@@ -245,6 +241,7 @@ class Pelanggan extends CI_Controller{
         $this->load->view('admin/layout/wrapper', $data, FALSE);
     }
 
+    
 
     //aktif
     public function aktif($id_pelanggan)
