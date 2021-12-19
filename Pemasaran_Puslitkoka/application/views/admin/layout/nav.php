@@ -124,16 +124,34 @@
 
 
 
-            <!-- MENU TRANSAKSI -->
-          <li class="nav-item">
-            <a href="<?= base_url('admin/transaksi') ?>" class="nav-link">
-              <i class="nav-icon fas fa-check text-aqua"></i>
-              <p>TRANSAKSI</p>
+
+  <!-- MENU TRANSAKSI -->
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+               <i class="nav-icon fas fa-check text-aqua"></i>
+              <p>
+                TRANSAKSI
+                <i class="right fas fa-angle-left"></i>
+              </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?= base_url('admin/transaksi') ?>" class="nav-link">
+                  <i class="nav-icon fa fa-table"></i>
+                  <p>Data Transaksi</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= base_url('admin/transaksi/tambah') ?>" class="nav-link">
+                  <i class="nav-icon fa fa-plus"></i>
+                  <p>Tambah Transaksi</p>
+                </a>
+              </li>
+            </ul>
           </li>
 
-
         
+          
 
          
           

@@ -17,25 +17,17 @@ if ($this->session->flashdata('sukses')) {
 	echo'</div>';
 }
 ?>
-<div class="table-responsive">
-	<table class="table table-bordered">
+
+	<table class="table table-bordered" id="example1">
 		<thead>
 			<tr>
+			<tr class="bg-success">
 				<th>NO</th>
 				<th>NAMA</th>
 				<th>NOMOR IDENTITAS</th>
 				<th>KATEGORI PELANGGAN</th>
 				<th>NAMA PERUSAHAAN</th>
-	            <th>HP</th>
-	            <th>TELEPON KANTOR</th>
-	            <th>NO REKENING</th>
-	         	<th>ALAMAT KANTOR</th>
-	            <th>KOTA</th>
-	            <th>PROVINSI</th>
-	            <th>KETERANGAN</th>
-	            <th>IUPB</th>
-	            <th>NIB</th>
-	            <th>SIUP</th>
+	            
 	            <th>ACTION</th>
 			</tr>
 		</thead>
@@ -47,16 +39,7 @@ if ($this->session->flashdata('sukses')) {
 				<td><?= $pelanggan->no_identitas ?></td>
 				<td><?= $pelanggan->nama_kategoripelanggan ?></td>
 	            <td><?= $pelanggan->nama_perusahaan ?></td>
-				<td><?= $pelanggan->hp ?></td>
-				<td><?= $pelanggan->telepon_kantor ?></td>
-				<td><?= $pelanggan->no_rekening ?></td>
-				<td><?= $pelanggan->alamat ?></td>
-				<td><?= $pelanggan->kota ?></td>
-				<td><?= $pelanggan->provinsi ?></td>
-				<td><?= $pelanggan->keterangan ?></td>
-				<td><?= $pelanggan->iupb ?></td>
-				<td><?= $pelanggan->nib ?></td>
-				<td><?= $pelanggan->siup ?></td>
+				
 				<td>
 					<a href="<?= base_url('admin/pelanggan/detail/'.$pelanggan->id_pelanggan) ?>" class="btn btn-success btn-xs"><i class="fa fa-trash-o"></i>Detail</a>
 

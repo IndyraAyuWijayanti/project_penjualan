@@ -20,44 +20,110 @@ class Transaksi_model extends CI_Model{
         return $query->result();
     }
 
-    //listing all transaksi berdasarkan header
-    public function kode_transaksi($kode_transaksi)
+   
+
+    //detail transaksi
+   
+     public function detail($id_transaksi)
     {
-        $this->db->select('transaksi.*,
-                           produk.nama_produk,
-                           produk.kode_produk,
-                           produk.id_produk');
+        $this->db->select('transaksi.*, pelanggan.*, bank.*, produk.*');
         $this->db->from('transaksi');
-        //join dengan produk ini
+
+        //join
+        $this->db->join('pelanggan', 'pelanggan.id_pelanggan = transaksi.id_pelanggan', 'left');
         $this->db->join('produk', 'produk.id_produk = transaksi.id_produk', 'left');
-        //end join
-        $this->db->where('kode_transaksi', $kode_transaksi);
+        $this->db->join('bank', 'bank.id_bank = transaksi.id_bank', 'left');
+
+        $this->db->where('transaksi.id_transaksi', $id_transaksi);
+        
+       //end join
+        $this->db->group_by('transaksi.id_transaksi');
+        $this->db->order_by('id_transaksi', 'asc');
+       $query = $this->db->get();
+       return $query->row();
+    }
+
+    //Listing transaksi (untuk menampilkan di tabel pada detail transaksi)
+    public function listing_transaksi($id_transaksi)
+    {
+        $this->db->select(' transaksi.*, users.*, pelanggan.*, bank.*, produk.*');
+        $this->db->from('transaksi');
+
+        //JOIN
+        $this->db->join('users', 'users.id_user = transaksi.id_user', 'left');
+        $this->db->join('pelanggan', 'pelanggan.id_pelanggan = transaksi.id_pelanggan', 'left');
+        $this->db->join('produk', 'produk.id_produk = transaksi.id_produk', 'left');
+        $this->db->join('bank', 'bank.id_bank = transaksi.id_bank', 'left');
+      
+        $this->db->where('transaksi.id_transaksi', $id_transaksi);
+
+        //END JOIN
         $this->db->order_by('id_transaksi', 'asc');
         $query = $this->db->get();
         return $query->result();
     }
 
-    //detail transaksi
-    public function detail($id_transaksi)
+
+   //Pelanggan
+  public function pelanggan($id_pelanggan,$limit,$start)
     {
-        $this->db->select('*');
+        $this->db->select(' transaksi.*,
+                            users.nama,
+                            pelanggan.nama_pelanggan,
+                            
+                            bank.nama_bank,
+                            produk.nama_produk'
+                            );
+                            
         $this->db->from('transaksi');
-        $this->db->where('id_transaksi', $id_transaksi);
-        $this->db->order_by('id_transaksi', 'desc');
+        //JOIN
+        $this->db->join('users', 'users.id_user = transaksi.id_user', 'left');
+        $this->db->join('pelanggan', 'pelanggan.id_pelanggan = transaksi.id_pelanggan', 'left');
+        $this->db->join('produk', 'produk.id_produk = transaksi.id_produk', 'left');
+        $this->db->join('bank', 'bank.id_bank = transaksi.id_bank', 'left');
+       
+        //END JOIN
+        
+        $this->db->where('transaksi.id_pelanggan', $id_pelanggan);
+        $this->db->where('transaksi.id_produk', $id_produk);
+        $this->db->where('transaksi.id_bank', $id_bank);
+        $this->db->group_by('transaksi.id_transaksi');
+
+        $this->db->order_by('id_transaksi', 'asc');
+        $this->db->limit($limit,$start);
         $query = $this->db->get();
-        return $query->row();
+        return $query->result();
     }
 
-    //detail slug transaksi
-    public function read($slug_transaksi)
+
+     //Listing Pelanggan
+     public function listing_pelanggan()
     {
-        $this->db->select('*');
+        $this->db->select(' transaksi.*,
+                            users.nama,
+                            pelanggan.nama_pelanggan,
+                            
+                            bank.nama_bank,
+                            produk.nama_produk'
+                           );
         $this->db->from('transaksi');
-        $this->db->where('slug_transaksi', $slug_transaksi);
-        $this->db->order_by('id_transaksi', 'desc');
+        //JOIN
+        $this->db->join('users', 'users.id_user = transaksi.id_user', 'left');
+        $this->db->join('pelanggan', 'pelanggan.id_pelanggan = transaksi.id_pelanggan', 'left');
+        $this->db->join('produk', 'produk.id_produk = transaksi.id_produk', 'left');
+        $this->db->join('bank', 'bank.id_bank = transaksi.id_bank', 'left');
+      
+
+        //END JOIN
+        $this->db->group_by('transaksi.id_pelanggan');
+        $this->db->group_by('transaksi.id_produk');
+        $this->db->group_by('transaksi.id_bank');
+        $this->db->order_by('id_transaksi', 'asc');
         $query = $this->db->get();
-        return $query->row();
+        return $query->result();
     }
+
+ 
 
     //login transaksi
     public function login($transaksiname, $password)

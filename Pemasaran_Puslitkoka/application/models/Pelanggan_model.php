@@ -40,8 +40,6 @@ class Pelanggan_model extends CI_Model{
     }
 
 
-
-
      //Kategori Pelanggan
         public function kategoripelanggan($id_kategoripelanggan,$limit,$start)
     {
@@ -82,7 +80,7 @@ class Pelanggan_model extends CI_Model{
       
 
         //END JOIN
-        $this->db->group_by('pelanggan.id_kategoripelanggan');
+        // $this->db->group_by('pelanggan.id_kategoripelanggan');
         $this->db->order_by('id_pelanggan', 'asc');
         $query = $this->db->get();
         return $query->result();

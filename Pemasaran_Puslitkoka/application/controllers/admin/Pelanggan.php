@@ -22,6 +22,7 @@ class Pelanggan extends CI_Controller{
                       'pelanggan'    => $pelanggan,
                       'isi'          => 'admin/pelanggan/list'
                      );
+
         $this->load->view('admin/layout/wrapper', $data, FALSE);
     }
 
@@ -36,7 +37,8 @@ class Pelanggan extends CI_Controller{
     }
 
     //Tambah pelanggan
-    public function tambahpelanggan()
+     
+        public function tambahpelanggan()
     {
       
         //ambil data kategori pelanggan
@@ -61,6 +63,7 @@ class Pelanggan extends CI_Controller{
             $this->load->library('upload', $config);
             
             if ( ! $this->upload->do_upload('iupb')){
+
         //end validasi
 
         $data = array('title'             => 'Tambah Pelanggan',
@@ -69,6 +72,8 @@ class Pelanggan extends CI_Controller{
                       'isi'               => 'admin/pelanggan/tambahpelanggan'
                      );
         $this->load->view('admin/layout/wrapper', $data, FALSE);
+
+        
         //masuk databese
         }else{
             $upload_gambar = array('upload_data' => $this->upload->data());
@@ -124,8 +129,9 @@ class Pelanggan extends CI_Controller{
         $this->load->view('admin/layout/wrapper', $data, FALSE);
     }
 
+
 //Edit data pelanggan
-    public function edit($id_pelanggan)
+   public function edit($id_pelanggan)
     {
         //ambil data yang akan diedit
         $pelanggan = $this->pelanggan_model->detail($id_pelanggan);
@@ -151,7 +157,9 @@ class Pelanggan extends CI_Controller{
             
             $this->load->library('upload', $config);
             
-            if ( !$this->upload->do_upload('iupb')){
+            if ( !$this->upload->do_upload('iupb'))
+           
+            {
         //end validasi
 
         $data = array('title'    => 'Edit Pelanggan: '.$pelanggan->nama_pelanggan,

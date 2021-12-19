@@ -45,7 +45,7 @@
 <div class="form-group row">
 	<label class="col-md-2 col-form-label control-label">Harga</label>
 	<div class="col-md-5">
-		<input type="text" name="harga" class="form-control" placeholder="Harga"
+		<input type="number" name="harga" class="form-control" placeholder="Harga"
 			value="<?php echo set_value('harga'); ?>" required>
 	</div>
 </div>
@@ -55,7 +55,7 @@
 <div class="form-group row">
 	<label class="col-md-2 col-form-label control-label">Qty</label>
 	<div class="col-md-5">
-		<input type="text" name="jumlah" class="form-control" placeholder="Qty"
+		<input type="number" name="jumlah" class="form-control" placeholder="Qty"
 			value="<?php echo set_value('jumlah'); ?>" required>
 	</div>
 </div>
@@ -63,7 +63,7 @@
 <div class="form-group row">
 	<label class="col-md-2 col-form-label control-label">Ongkir</label>
 	<div class="col-md-5">
-		<input type="text" name="ongkir" class="form-control" placeholder="Ongkir"
+		<input type="number" name="ongkir" class="form-control" placeholder="Ongkir"
 			value="<?php echo set_value('ongkir'); ?>" required>
 	</div>
 </div>
@@ -71,7 +71,7 @@
 <div class="form-group row">
 	<label class="col-md-2 col-form-label control-label">Diskon</label>
 	<div class="col-md-5">
-		<input type="text" name="diskon" class="form-control" placeholder="Diskon"
+		<input type="number" name="diskon" class="form-control" placeholder="Diskon"
 			value="<?php echo set_value('diskon'); ?>" required>
 	</div>
 </div>
@@ -87,8 +87,8 @@
 <div class="form-group row">
 	<label class="col-md-2 col-form-label control-label">Status Pembayaran</label>
 	<div class="col-md-5">
-		<input type="text" name="status_bayar" class="form-control" placeholder="Status Pembayaran"
-			value="<?php echo set_value('status_bayar'); ?>" required>
+		<input type="text" name="status_pembayaran" class="form-control" placeholder="Status Pembayaran"
+			value="<?php echo set_value('status_pembayaran'); ?>" required>
 	</div>
 </div>
 
@@ -100,6 +100,7 @@
 	</div>
 </div>
 
+
 <div class="form-group row">
 	<label class="col-md-2 col-form-label control-label">Upload gambar Bukti Bayar 1</label>
 	<div class="col-md-5">
@@ -110,7 +111,7 @@
 <div class="form-group row">
 	<label class="col-md-2 col-form-label control-label">Jumlah Bayar 1</label>
 	<div class="col-md-5">
-		<input type="text" name="jumlah_bayar1" class="form-control" placeholder="Jumlah Bayar 1"
+		<input type="number" name="jumlah_bayar1" class="form-control" placeholder="Jumlah Bayar 1"
 			value="<?php echo set_value('jumlah_bayar1'); ?>" required>
 	</div>
 </div>
@@ -118,12 +119,13 @@
 <div class="form-group row">
 	<label class="col-md-2 col-form-label control-label">Bank 1</label>
 	<div class="col-md-5">
-		<select name="id_bank" class="form-control">
-			<?php foreach ($bank as $bank) { ?>
-			<option value="<?php echo $bank->id_bank ?>">
-				<?php echo $bank->nama_bank ?>
-			</option>
-			<?php } ?>
+		<select name="nama_bank1" class="form-control">
+
+	<option value="BRI">BRI</option>
+	<option value="MANDIRI">Mandiri</option>
+	<option value="TUNAI">Tunai</option>
+	
+			
 		</select>
 	</div>
 </div>
@@ -147,7 +149,7 @@
 <div class="form-group row">
 	<label class="col-md-2 col-form-label control-label">Jumlah Bayar 2</label>
 	<div class="col-md-5">
-		<input type="text" name="jumlah_bayar2" class="form-control" placeholder="Jumlah Bayar 2"
+		<input type="number" name="jumlah_bayar2" class="form-control" placeholder="Jumlah Bayar 2"
 			value="<?php echo set_value('jumlah_bayar2'); ?>" required>
 	</div>
 </div>
@@ -156,15 +158,17 @@
 <div class="form-group row">
 	<label class="col-md-2 col-form-label control-label">Bank 2</label>
 	<div class="col-md-5">
-		<select name="id_bank" class="form-control">
-			<?php foreach ($bank as $bank) { ?>
-			<option value="<?php echo $bank->id_bank ?>">
-				<?php echo $bank->nama_bank ?>
-			</option>
-			<?php } ?>
+		<select name="nama_bank2" class="form-control">
+
+	<option value="BRI">BRI</option>
+	<option value="MANDIRI">Mandiri</option>
+	<option value="TUNAI">Tunai</option>
+	
+			
 		</select>
 	</div>
 </div>
+
 
 <div class="form-group row">
 	<label class="col-md-2 col-form-label control-label">Tanggal Bayar 3</label>
@@ -184,7 +188,7 @@
 <div class="form-group row">
 	<label class="col-md-2 col-form-label control-label">Jumlah Bayar 3</label>
 	<div class="col-md-5">
-		<input type="text" name="jumlah_bayar3" class="form-control" placeholder="Jumlah Bayar 3"
+		<input type="number" name="jumlah_bayar3" class="form-control" placeholder="Jumlah Bayar 3"
 			value="<?php echo set_value('jumlah_bayar3'); ?>" required>
 	</div>
 </div>
@@ -192,15 +196,18 @@
 <div class="form-group row">
 	<label class="col-md-2 col-form-label control-label">Bank 3</label>
 	<div class="col-md-5">
-		<select name="id_bank" class="form-control">
-			<?php foreach ($bank as $bank) { ?>
-			<option value="<?php echo $bank->id_bank ?>">
-				<?php echo $bank->nama_bank ?>
-			</option>
-			<?php } ?>
+		<select name="nama_bank3" class="form-control">
+
+	<option value="BRI">BRI</option>
+	<option value="MANDIRI">Mandiri</option>
+	<option value="TUNAI">Tunai</option>
+	
+			
 		</select>
 	</div>
 </div>
+
+
 
 
 <div class="form-group row">

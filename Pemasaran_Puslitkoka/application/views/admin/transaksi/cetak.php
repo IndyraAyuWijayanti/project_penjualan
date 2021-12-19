@@ -70,53 +70,130 @@
                         <thead>
                         <tr>
                                 <th width="20%">Nama Pelanggan</th>
-                                <th><?php echo $header_transaksi->nama_pelanggan ?></th>
+                                <th><?php echo $transaksi->nama_pelanggan ?></th>
                             </tr>
                             <tr>
                                 <th width="20%">KODE TRANSAKSI</th>
-                                <th><?php echo $header_transaksi->kode_transaksi ?></th>
+                                <th><?php echo $transaksi->kode_transaksi ?></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Tanggal</td>
-                                <td>: <?php echo date('d-m-Y',strtotime($header_transaksi->tanggal_transaksi)) ?></td>
+                              <tr>
+                                <th width="20%">Nama Produk</th>
+                                <th><?php echo $transaksi->nama_produk ?></th>
                             </tr>
-                            <tr>
-                                <td>Jumlah</td>
-                                <td>: <?php echo number_format($header_transaksi->jumlah_transaksi) ?></td>
+
+                             <tr>
+                                <td>Harga</td>
+                                <td>: <?php echo number_format($transaksi->harga) ?></td>
                             </tr>
+                            
                             <tr>
-                                <td>Status Bayar</td>
-                                <td>: <?php echo $header_transaksi->status_bayar ?></td>
+                                <td>Jumlah Produk</td>
+                                <td>: <?php echo number_format($transaksi->total_jumlahproduk) ?></td>
                             </tr>
+
+                             <tr>
+                                <td>Ongkir</td>
+                                <td>: <?php echo number_format($transaksi->ongkir) ?></td>
+                            </tr>
+
                             <tr>
-                                <td>Bukti Bayar</td>
-                                <td>: <?php if($header_transaksi->bukti_bayar =="") { echo 'Belom ada'; }else {
+                                <td>Diskon</td>
+                                <td>: <?php echo number_format($transaksi->diskon) ?></td>
+                            </tr>
+
+                            <tr>
+                                <th width="20%">Alamat Pengiriman</th>
+                                <th><?php echo $transaksi->alamat_pengiriman ?></th>
+                            </tr>
+
+
+
+                            <tr>
+                                <td>Status Pembayaran</td>
+                                <td>: <?php echo $transaksi->status_pembayaran ?></td>
+                            </tr>
+
+
+                            <tr>
+                                <td>Tanggal Bayar 1</td>
+                                <td>: <?php echo date('d-m-Y',strtotime($transaksi->tgl_bayar1)) ?>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Bukti Bayar 1</td>
+                                <td>: <?php if($transaksi->bukti_bayar1 =="") { echo 'Belum ada'; }else {
                                 ?>
-                                        <img src="<?php echo base_url('assets/uploud/image/'.$header_transaksi->
-                                        bukti_bayar) ?>" class="img img-thumbnail" width="200"> 
+                                        <img src="<?php echo base_url('assets/upload/image/'.$transaksi->bukti_bayar1) ?>" class="img img-thumbnail" width="200"> 
                                  <?php } ?>
                                  </td>
                             </tr>
+
+                             <tr>
+                                <td>Jumlah Bayar 1</td>
+                                <td>: <?php echo number_format($transaksi->jumlah_bayar1) ?></td>
+                            </tr>
+
+                             <tr>
+                                <th width="20%">Bank 1</th>
+                                <th><?php echo $transaksi->nama_bank ?></th>
+                            </tr>
+
+
                             <tr>
-                                <td>Tanggal Bayar</td>
-                                <td>: <?php echo date('d-m-Y',strtotime($header_transaksi->tanggal_bayar)) ?>
+                                <td>Tanggal Bayar 2</td>
+                                <td>: <?php echo date('d-m-Y',strtotime($transaksi->tgl_bayar2)) ?>
                                 </td>
                             </tr>
+
                             <tr>
-                                <td>Jumlah Bayar</td>
-                                <td>: Rp. <?php echo number_format($header_transaksi->jumlah_bayar,'0',',','.') 
-                                ?></td>
+                                <td>Bukti Bayar 2</td>
+                                <td>: <?php if($transaksi->bukti_bayar2 =="") { echo 'Belum ada'; }else {
+                                ?>
+                                        <img src="<?php echo base_url('assets/upload/image/'.$transaksi->bukti_bayar2) ?>" class="img img-thumbnail" width="200"> 
+                                 <?php } ?>
+                                 </td>
                             </tr>
+
+                             <tr>
+                                <td>Jumlah Bayar 2</td>
+                                <td>: <?php echo number_format($transaksi->jumlah_bayar2) ?></td>
+                            </tr>
+
+                             <tr>
+                                <th width="20%">Bank 2</th>
+                                <th><?php echo $transaksi->nama_bank ?></th>
+                            </tr>
+
+
                             <tr>
-                                <td>Pembayaran dari</td>
-                                <td>: <?php echo $header_transaksi->nama_bank ?> No. rekening <?php echo $header_transaksi->rekening_pembayaran ?> a.n <?php echo $header_transaksi->rekening_pelanggan ?></td>
+                                <td>Tanggal Bayar 3</td>
+                                <td>: <?php echo date('d-m-Y',strtotime($transaksi->tgl_bayar3)) ?>
+                                </td>
                             </tr>
+
                             <tr>
-                                <td>Pembayaran ke rekening</td>
-                                <td>: <?php echo $header_transaksi->bank ?> No. rekening <?php echo $header_transaksi->nomor_rekening ?> a.n <?php echo $header_transaksi->nama_pemilik ?></td>
+                                <td>Bukti Bayar 3</td>
+                                <td>: <?php if($transaksi->bukti_bayar3 =="") { echo 'Belum ada'; }else {
+                                ?>
+                                        <img src="<?php echo base_url('assets/upload/image/'.$transaksi->bukti_bayar3) ?>" class="img img-thumbnail" width="200"> 
+                                 <?php } ?>
+                                 </td>
                             </tr>
+
+                             <tr>
+                                <td>Jumlah Bayar 3</td>
+                                <td>: <?php echo number_format($transaksi->jumlah_bayar3) ?></td>
+                            </tr>
+
+                             <tr>
+                                <th width="20%">Bank 3</th>
+                                <th><?php echo $transaksi->nama_bank ?></th>
+                            </tr>
+
+
                         </tbody>
                     </table>
 
@@ -141,7 +218,7 @@
                                 <td><?php echo $transaksi->nama_produk ?></td>
                                 <td><?php echo number_format($transaksi->jumlah) ?></td>
                                 <td><?php echo number_format($transaksi->harga) ?></td>
-                                <td><?php echo number_format($transaksi->total_harga) ?></td>
+                                <td><?php echo number_format($transaksi->total_pembayaran) ?></td>
                             </tr>
                             <?php $i++; } ?>
                         </tbody>

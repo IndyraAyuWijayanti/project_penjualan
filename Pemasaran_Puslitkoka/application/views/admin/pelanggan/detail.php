@@ -47,7 +47,7 @@
 			<th><?php echo $pelanggan->kota ?></th>
 		</tr>
 		<tr>
-			<th width="20%"Provinsi</th>
+			<th width="20%">Provinsi</th>
 			<th><?php echo $pelanggan->provinsi ?></th>
 		</tr>
 		<tr>
