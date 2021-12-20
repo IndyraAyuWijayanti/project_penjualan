@@ -49,7 +49,6 @@ class Pelanggan extends CI_Controller{
         $valid->set_rules('nama_pelanggan','Nama Pelanggan','required', 
                 array( 'required'    =>'%s harus diisi'));
        
-       
         
                         
         if($valid->run()){
@@ -73,7 +72,7 @@ class Pelanggan extends CI_Controller{
                      );
         $this->load->view('admin/layout/wrapper', $data, FALSE);
 
-        
+
         //masuk databese
         }else{
             $upload_gambar = array('upload_data' => $this->upload->data());
@@ -251,37 +250,27 @@ class Pelanggan extends CI_Controller{
 
     
 
-    //aktif
-    public function aktif($id_pelanggan)
+     //Cetak
+    public function cetak($id_pelanggan)
     {
-        $pelanggan = $this->pelanggan_model->detail($id_pelanggan);
+        $pelanggan       = $this->pelanggan_model->id_pelanggan($id_pelanggan);
+       
+        //ambil data kategori
+        $kategoripelanggan = $this->kategoripelanggan_model->listing();
         
-        if ($pelanggan->status_pelanggan=="Aktif") 
-        {
-            $i = $this->input;
+       
 
-            $data = array(  'id_pelanggan'       => $id_pelanggan,
-                            'id_user'            => $this->session->userdata('id_user'),
-                            'status_pelanggan'   => 'Pending'
-                        );
-            $this->pelanggan_model->edit($data);
-            $this->session->set_flashdata('sukses', 'Data Reseller telah di Non Aktifkan');
-            redirect(base_url('admin/pelanggan'),'refresh');
-        }
-        elseif ($pelanggan->status_pelanggan=="Pending") {
-            $i = $this->input;
-
-            $data = array(  'id_pelanggan'       => $id_pelanggan,
-                            'id_user'            => $this->session->userdata('id_user'),
-                            'status_pelanggan'   => 'Aktif'
-                        );
-            $this->pelanggan_model->edit($data);
-            $this->session->set_flashdata('sukses', 'Data Reseller telah di Aktifkan');
-            redirect(base_url('admin/pelanggan'),'refresh');
-        }
-
-        
+        $data = array(  'title'              => 'Cetak Pelanggan',
+                        'pelanggan'          => $pelanggan,
+                        'kategoripelanggan'  => $kategoripelanggan,
+                      
+                    );
+        $this->load->view('admin/pelanggan/cetak', $data, FALSE);
     }
+
+
+        
+    
 
     //Delete pelanggan
     public function delete($id_pelanggan)
@@ -293,4 +282,5 @@ class Pelanggan extends CI_Controller{
         redirect(base_url('admin/pelanggan'),'refresh');
     }
 }
+
 ?>

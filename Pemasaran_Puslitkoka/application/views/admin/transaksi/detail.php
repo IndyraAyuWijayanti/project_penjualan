@@ -22,6 +22,12 @@
                         </thead>
                         <tbody>
 
+                           <tr>
+                                <th width="20%">Nomor SPK</th>
+                                <td> <?php echo $transaksi->nomor_spk ?></td>
+                            </tr>
+
+
                       
                         <tr>
                                 <th width="20%">Nama Produk</th>
@@ -165,6 +171,32 @@
                                 <td><?php echo $transaksi->nama_produk ?></td>
                                 <td><?php echo number_format($transaksi->jumlah) ?></td>
                                 <td><?php echo number_format($transaksi->harga) ?></td>
+                                <td><?php echo number_format($transaksi->total_pembayaran) ?></td>
+                            </tr>
+                            <?php $i++; } ?>
+                        </tbody>
+                    </table>
+
+
+                     <hr>
+
+                    <table class="table table-bordered" width="100%">
+                        <thead>
+                            <tr class="bg-success">
+                               
+                                <th>Total Jumlah Produk</th>
+                                <th>Total Tagihan</th>
+                                <th>Total Pembayaran</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $i=1; foreach($dataTransaksi as $transaksi){ ?>
+                            <tr>
+                             
+                                
+                                <td><?php echo number_format($transaksi->total_jumlahproduk) ?></td>
+                                <td><?php echo number_format($transaksi->total_tagihan) ?></td>
                                 <td><?php echo number_format($transaksi->total_pembayaran) ?></td>
                             </tr>
                             <?php $i++; } ?>

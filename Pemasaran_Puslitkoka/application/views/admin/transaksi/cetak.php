@@ -65,7 +65,7 @@
 </head>
 <body onload="print()">
      <div class="cetak">
-        <h1>DETAIL TRANSAKSI <?php echo $site->namaweb ?></h1>
+       
         <table class="table table-bordered">
                         <thead>
                         <tr>
@@ -75,6 +75,10 @@
                             <tr>
                                 <th width="20%">KODE TRANSAKSI</th>
                                 <th><?php echo $transaksi->kode_transaksi ?></th>
+                            </tr>
+                            <tr>
+                                <th width="20%">Nomor SPK</th>
+                                <th><?php echo $transaksi->nomor_spk ?></th>
                             </tr>
                         </thead>
                         <tbody>

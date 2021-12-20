@@ -13,6 +13,15 @@
 	echo form_open_multipart(base_url('admin/transaksi/tambah'), ' class="form-horizontal"');
 ?>
 
+
+<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label">Nomor SPK</label>
+	<div class="col-md-5">
+		<input type="text" name="nomor_spk" class="form-control" placeholder="Nomor SPK"
+			value="<?php echo set_value('nomor_spk'); ?>" required>
+	</div>
+</div>
+
 <div class="form-group row">
 	<label class="col-md-2 col-form-label control-label">Nama Pelanggan</label>
 	<div class="col-md-5">
@@ -39,6 +48,7 @@
 		</select>
 	</div>
 </div>
+
 
 
 
