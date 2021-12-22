@@ -21,9 +21,9 @@ if ($this->session->flashdata('sukses')) {
         <tr>
         <tr class="bg-success">
                                 <th>NO</th>
-
-                                <th>PELANGGAN</th>
-                                <th>KODE TRANSAKSI</th>
+                                 <th>TANGGAL TRANSAKSI</th>
+                                 <th>KODE TRANSAKSI</th>
+                                 <th>PELANGGAN</th>
                                 <th>PRODUK</th>
                                 <th>JUMLAH ITEM</th>
                                 <th>STATUS PEMBAYARAN</th>
@@ -34,10 +34,11 @@ if ($this->session->flashdata('sukses')) {
         <?php $no=1; foreach($transaksi as $transaksi){ ?>
         <tr>
             <td><?= $no++ ?></td>
-            
-                
-            <td><?= $transaksi->nama_pelanggan ?></td>
-                                    <td><?= $transaksi->kode_transaksi ?></td>
+                                    
+                                    <td><?= $transaksi->tanggal_transaksi ?></td>
+                                     <td><?= $transaksi->kode_transaksi ?></td>
+                                    <td><?= $transaksi->nama_pelanggan ?></td>
+                                   
                                     <td><?= $transaksi->nama_produk?></td>
                                     <td><?= $transaksi->total_jumlahproduk ?></td>
                                     <td><?= $transaksi->status_pembayaran?></td>

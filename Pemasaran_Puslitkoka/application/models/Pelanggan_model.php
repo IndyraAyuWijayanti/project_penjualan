@@ -32,7 +32,7 @@ class Pelanggan_model extends CI_Model{
        $this->db->join('kategori_pelanggan', 'kategori_pelanggan.id_kategoripelanggan = pelanggan.id_kategoripelanggan', 'left');
 
        //end join
-
+           $this->db->where('id_pelanggan', $id_pelanggan);
        $this->db->group_by('pelanggan.id_pelanggan');
        $this->db->order_by('id_pelanggan', 'asc');
        $query = $this->db->get();

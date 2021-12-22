@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 20, 2021 at 08:26 AM
+-- Generation Time: Dec 22, 2021 at 08:16 AM
 -- Server version: 10.1.39-MariaDB
 -- PHP Version: 7.3.5
 
@@ -376,7 +376,8 @@ INSERT INTO `pelanggan` (`id_pelanggan`, `id_user`, `id_kategoripelanggan`, `nam
 (30, 12, 4, 'lala', '', NULL, 'blitar', '2021-12-19 14:48:58', '2021-12-19 14:48:58', '357207778889900009', 'pt indy', '112232', '11222', '08977655448', 'blitar', 'jatim', '', '', 'lunas', 'beranda20.png', 'beranda20.png', 'beranda20.png', '', ''),
 (31, 12, 4, 'lila', '', NULL, 'blitar', '2021-12-19 15:52:05', '2021-12-19 15:52:05', '357207778889900001', 'PT Indah Jaya', '112232', '11222', '08977655448', 'blitar', 'jatim', '', '', 'lunas', 'images3.png', '', '', '', ''),
 (32, 12, 4, 'luluk', '', NULL, 'blitar', '2021-12-19 15:59:18', '2021-12-19 15:59:18', '357207778889900001', 'pt indy', '112232', '11222', '08977655448', 'blitar', 'jatim', '', '', 'lunas', 'puslit1.png', 'puslit1.png', 'puslit1.png', '', ''),
-(33, 12, 5, 'lili', '', NULL, 'blitar', '2021-12-19 16:02:24', '2021-12-19 16:02:24', '357207778889900009', 'pt indy', '112232', '11222', '0856177722', 'blitar', 'jatim', '', '', 'lunas', 'puslit2.png', '', '', '', '');
+(33, 12, 5, 'lili', '', NULL, 'blitar', '2021-12-19 16:02:24', '2021-12-19 16:02:24', '357207778889900009', 'pt indy', '112232', '11222', '0856177722', 'blitar', 'jatim', '', '', 'lunas', 'puslit2.png', '', '', '', ''),
+(34, 12, 5, 'lilo', '', NULL, 'Banyuwangiww', '2021-12-21 02:43:22', '2021-12-21 02:43:22', '357207778889900002', 'pt indy', '112232', '11222', '0856177722', 'blitar', 'jatim', '', '', 'lunas', 'images4.png', 'images4.png', 'images4.png', '', '');
 
 -- --------------------------------------------------------
 
@@ -409,7 +410,10 @@ CREATE TABLE `produk` (
 
 INSERT INTO `produk` (`id_produk`, `id_user`, `id_kategori`, `kode_produk`, `nama_produk`, `slug_produk`, `keterangan`, `keywords`, `harga`, `stok`, `gambar`, `berat`, `ukuran`, `status_produk`, `tanggal_post`, `tanggal_update`) VALUES
 (20, 12, 5, 'BNRHS', 'Benih Robusta Hibiro 1', 'benih-robusta-hibiro-1-bnrhs', NULL, NULL, 750, NULL, 'kopi9.jpg', NULL, NULL, 'Publish', '2021-11-11 01:51:00', '2021-11-11 00:51:43'),
-(21, 12, 5, 'RBSH2', 'Benih Robusta Hibiro 2', 'benih-robusta-hibiro-2-rbsh2', NULL, NULL, 500, NULL, 'kopi10.jpg', NULL, NULL, 'Publish', '2021-11-15 02:19:00', '2021-11-15 01:19:15');
+(21, 12, 5, 'RBSH2', 'Benih Robusta Hibiro 2', 'benih-robusta-hibiro-2-rbsh2', NULL, NULL, 500, NULL, 'kopi10.jpg', NULL, NULL, 'Publish', '2021-11-15 02:19:00', '2021-11-15 01:19:15'),
+(23, 12, 5, 'BRHS5', 'Benih Robusto Hibiro 5', 'benih-robusto-hibiro-5-brhs5', NULL, NULL, 750, NULL, 'kopi14.jpg', NULL, NULL, 'Publish', '2021-12-22 08:10:00', '2021-12-22 07:10:38'),
+(24, 12, 7, 'BRSB42', 'Bibit Robsta Sambung BP42', 'bibit-robsta-sambung-bp42-brsb42', NULL, NULL, 10000, NULL, 'kopi15.jpg', NULL, NULL, 'Publish', '2021-12-22 08:12:00', '2021-12-22 07:13:09'),
+(25, 12, 7, 'KRS234', 'Bibit Robsta Sambung BP234', 'bibit-robsta-sambung-bp234-krs234', NULL, NULL, 10000, NULL, 'kopi16.jpg', NULL, NULL, 'Publish', '2021-12-22 08:12:00', '2021-12-22 07:13:15');
 
 -- --------------------------------------------------------
 
@@ -471,7 +475,7 @@ CREATE TABLE `transaksi` (
   `jumlah_bayar3` int(11) NOT NULL,
   `nama_bank3` varchar(255) NOT NULL,
   `total_harga` int(11) NOT NULL,
-  `tanggal_transaksi` datetime NOT NULL,
+  `tanggal_transaksi` date NOT NULL,
   `slug_transaksi` varchar(255) NOT NULL,
   `tanggal_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -481,11 +485,11 @@ CREATE TABLE `transaksi` (
 --
 
 INSERT INTO `transaksi` (`id_transaksi`, `id_user`, `id_pelanggan`, `kode_transaksi`, `nomor_spk`, `id_produk`, `id_produk2`, `id_produk3`, `id_bank`, `harga`, `jumlah`, `ongkir`, `diskon`, `total_jumlahproduk`, `total_tagihan`, `total_pembayaran`, `alamat_pengirimann`, `status_pembayaran`, `tgl_bayar1`, `bukti_bayar1`, `jumlah_bayar1`, `nama_bank1`, `tgl_bayar2`, `bukti_bayar2`, `jumlah_bayar2`, `nama_bank2`, `tgl_bayar3`, `bukti_bayar3`, `jumlah_bayar3`, `nama_bank3`, `total_harga`, `tanggal_transaksi`, `slug_transaksi`, `tanggal_update`) VALUES
-(16, 12, 24, '', '', 20, 0, 0, 0, 500, 2, 20, 0, 2, 0, 0, 'Blitar', 'lunas', '2021-12-22', 'images2.png', 10, 'BRI', '2021-12-01', 'images2.png', 55, 'MANDIRI', '2021-12-22', 'images2.png', 55, 'TUNAI', 0, '0000-00-00 00:00:00', '', '2021-12-19 14:42:27'),
-(17, 12, 29, '', '', 21, 0, 0, 0, 500, 2, 2, 2, 2, 0, 0, 'jember', 'lunas', '2021-12-21', 'beranda21.png', 33, 'MANDIRI', '2021-12-21', 'beranda21.png', 55, 'TUNAI', '2021-12-27', 'beranda21.png', 55, 'MANDIRI', 0, '0000-00-00 00:00:00', '', '2021-12-19 16:18:37'),
-(18, 12, 33, '', '', 21, 0, 0, 0, 500, 100, 20, 0, 100, 0, 0, 'Blitar', 'lunas', '2021-12-14', 'beranda22.png', 10, 'MANDIRI', '2021-12-15', 'beranda22.png', 10, 'MANDIRI', '2021-12-16', 'beranda22.png', 5, 'MANDIRI', 0, '0000-00-00 00:00:00', '', '2021-12-20 01:57:13'),
-(19, 12, 29, 'DO12345', '', 21, 0, 0, 0, 500, 2, 2, 2, 2, 0, 0, '2', 'lunas', '2021-12-21', 'iconadmin6.png', 33, 'MANDIRI', '2021-12-21', 'iconadmin6.png', 55, 'MANDIRI', '2021-12-15', 'iconadmin6.png', 55, 'MANDIRI', 0, '0000-00-00 00:00:00', '', '2021-12-20 02:14:39'),
-(20, 12, 21, '', 'SPk988w8', 20, 0, 0, 0, 500, 2, 2, 2, 2, 0, 0, '2', 'lunas', '2021-12-23', 'beranda25.png', 33, 'MANDIRI', '2021-12-23', 'beranda25.png', 55, 'MANDIRI', '2021-12-30', 'beranda25.png', 55, 'MANDIRI', 0, '0000-00-00 00:00:00', '', '2021-12-20 07:20:01');
+(16, 12, 24, '', '', 20, 0, 0, 0, 500, 2, 20, 0, 2, 0, 0, 'Blitar', 'lunas', '2021-12-22', 'images2.png', 10, 'BRI', '2021-12-01', 'images2.png', 55, 'MANDIRI', '2021-12-22', 'images2.png', 55, 'TUNAI', 0, '0000-00-00', '', '2021-12-19 14:42:27'),
+(17, 12, 29, '', '', 21, 0, 0, 0, 500, 2, 2, 2, 2, 0, 0, 'jember', 'lunas', '2021-12-21', 'beranda21.png', 33, 'MANDIRI', '2021-12-21', 'beranda21.png', 55, 'TUNAI', '2021-12-27', 'beranda21.png', 55, 'MANDIRI', 0, '0000-00-00', '', '2021-12-19 16:18:37'),
+(18, 12, 33, '', '', 21, 0, 0, 0, 500, 100, 20, 0, 100, 0, 0, 'Blitar', 'lunas', '2021-12-14', 'beranda22.png', 10, 'MANDIRI', '2021-12-15', 'beranda22.png', 10, 'MANDIRI', '2021-12-16', 'beranda22.png', 5, 'MANDIRI', 0, '0000-00-00', '', '2021-12-20 01:57:13'),
+(19, 12, 29, 'DO12345', '', 21, 0, 0, 0, 500, 2, 2, 2, 2, 0, 0, '2', 'lunas', '2021-12-21', 'iconadmin6.png', 33, 'MANDIRI', '2021-12-21', 'iconadmin6.png', 55, 'MANDIRI', '2021-12-15', 'iconadmin6.png', 55, 'MANDIRI', 0, '0000-00-00', '', '2021-12-20 02:14:39'),
+(20, 12, 21, '', 'SPk988w8', 20, 0, 0, 0, 500, 2, 2, 2, 2, 0, 0, '2', 'lunas', '2021-12-23', 'beranda25.png', 33, 'MANDIRI', '2021-12-23', 'beranda25.png', 55, 'MANDIRI', '2021-12-30', 'beranda25.png', 55, 'MANDIRI', 0, '0000-00-00', '', '2021-12-20 07:20:01');
 
 --
 -- Triggers `transaksi`
@@ -670,13 +674,13 @@ ALTER TABLE `kota`
 -- AUTO_INCREMENT for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `rekening`

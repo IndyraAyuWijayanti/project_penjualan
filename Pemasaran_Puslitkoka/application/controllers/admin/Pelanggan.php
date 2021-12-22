@@ -63,6 +63,9 @@ class Pelanggan extends CI_Controller{
             
             if ( ! $this->upload->do_upload('iupb')){
 
+            if ( ! $this->upload->do_upload('nib')){
+            if ( ! $this->upload->do_upload('siup')){
+
         //end validasi
 
         $data = array('title'             => 'Tambah Pelanggan',
@@ -90,6 +93,46 @@ class Pelanggan extends CI_Controller{
             
             $this->load->library('image_lib', $config);
             $this->image_lib->resize();
+
+              }
+
+
+              }else{
+            $upload_gambar = array('upload_data' => $this->upload->data());
+
+            //create thumb
+            $config['image_library']    = 'gd2';
+            $config['source_image']     = './assets/upload/image/'.$upload_gambar['upload_data']['file_name'];
+            //lokasi folder gbr thumb
+            $config['new_image']    = './assets/upload/image/thumbs/';
+            $config['create_thumb']     = TRUE;
+            $config['maintain_ratio']   = TRUE;
+            $config['width']            = 250;
+            $config['height']           = 250;
+            $config['thumb_marker']     = '';
+            
+            $this->load->library('image_lib', $config);
+            $this->image_lib->resize();
+
+              }
+
+              }else{
+            $upload_gambar = array('upload_data' => $this->upload->data());
+
+            //create thumb
+            $config['image_library']    = 'gd2';
+            $config['source_image']     = './assets/upload/image/'.$upload_gambar['upload_data']['file_name'];
+            //lokasi folder gbr thumb
+            $config['new_image']    = './assets/upload/image/thumbs/';
+            $config['create_thumb']     = TRUE;
+            $config['maintain_ratio']   = TRUE;
+            $config['width']            = 250;
+            $config['height']           = 250;
+            $config['thumb_marker']     = '';
+            
+            $this->load->library('image_lib', $config);
+            $this->image_lib->resize();
+          }
             //end thumb
 
             $i = $this->input;
@@ -119,7 +162,7 @@ class Pelanggan extends CI_Controller{
             $this->pelanggan_model->tambah($data);
             $this->session->set_flashdata('sukses', 'Data telah ditambahkan');
             redirect(base_url('admin/pelanggan'),'refresh');
-        }}
+        }
         //end masuk database
         $data = array('title'                => 'Tambah Pelanggan',
                       'kategoripelanggan'    => $kategoripelanggan,
@@ -280,6 +323,16 @@ class Pelanggan extends CI_Controller{
         $this->pelanggan_model->delete($data);
         $this->session->set_flashdata('sukses', 'Data berhasil dihapus');
         redirect(base_url('admin/pelanggan'),'refresh');
+    }
+
+    //print data pelanggan
+    public function print()
+    {
+
+       $pelanggan = $this->pelanggan_model->listing_kategoripelanggan();
+     
+       $this->load->view('print_pelanggan', $pelanggan);
+
     }
 }
 

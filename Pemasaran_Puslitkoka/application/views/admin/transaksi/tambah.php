@@ -15,6 +15,14 @@
 
 
 <div class="form-group row">
+	<label class="col-md-2 col-form-label control-label">Tanggal Transaksi</label>
+	<div class="col-md-5">
+		<input type="date" name="tanggal_transaksi" class="form-control" placeholder="Tanggal Transaksi"
+			value="<?php echo set_value('tanggal_transaksi'); ?>" required>
+	</div>
+</div>
+
+<div class="form-group row">
 	<label class="col-md-2 col-form-label control-label">Nomor SPK</label>
 	<div class="col-md-5">
 		<input type="text" name="nomor_spk" class="form-control" placeholder="Nomor SPK"
@@ -37,7 +45,7 @@
 
 
 <div class="form-group row">
-	<label class="col-md-2 col-form-label control-label">Produk</label>
+	<label class="col-md-2 col-form-label control-label">Produk 1</label>
 	<div class="col-md-5">
 		<select name="id_produk" class="form-control">
 			<?php foreach ($produk as $produk) { ?>
@@ -48,9 +56,6 @@
 		</select>
 	</div>
 </div>
-
-
-
 
 <div class="form-group row">
 	<label class="col-md-2 col-form-label control-label">Harga</label>
@@ -71,12 +76,142 @@
 </div>
 
 <div class="form-group row">
-	<label class="col-md-2 col-form-label control-label">Ongkir</label>
+	<label class="col-md-2 col-form-label control-label">Produk 2</label>
 	<div class="col-md-5">
-		<input type="number" name="ongkir" class="form-control" placeholder="Ongkir"
-			value="<?php echo set_value('ongkir'); ?>" required>
+		<select name="id_produk" class="form-control">
+			<?php foreach ($produk as $produk) { ?>
+			<option value="<?php echo $produk->id_produk ?>">
+				<?php echo $produk->nama_produk ?>
+			</option>
+			<?php } ?>
+		</select>
 	</div>
 </div>
+
+<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label">Harga</label>
+	<div class="col-md-5">
+		<input type="number" name="harga" class="form-control" placeholder="Harga"
+			value="<?php echo set_value('harga'); ?>" required>
+	</div>
+</div>
+
+
+
+<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label">Qty</label>
+	<div class="col-md-5">
+		<input type="number" name="jumlah" class="form-control" placeholder="Qty"
+			value="<?php echo set_value('jumlah'); ?>" required>
+	</div>
+</div>
+
+<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label">Produk 3</label>
+	<div class="col-md-5">
+		<select name="id_produk" class="form-control">
+			<?php foreach ($produk as $produk) { ?>
+			<option value="<?php echo $produk->id_produk ?>">
+				<?php echo $produk->nama_produk ?>
+			</option>
+			<?php } ?>
+		</select>
+	</div>
+</div>
+
+<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label">Harga</label>
+	<div class="col-md-5">
+		<input type="number" name="harga" class="form-control" placeholder="Harga"
+			value="<?php echo set_value('harga'); ?>" required>
+	</div>
+</div>
+
+
+
+<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label">Qty</label>
+	<div class="col-md-5">
+		<input type="number" name="jumlah" class="form-control" placeholder="Qty"
+			value="<?php echo set_value('jumlah'); ?>" required>
+	</div>
+</div>
+
+<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label">Produk 4</label>
+	<div class="col-md-5">
+		<select name="id_produk" class="form-control">
+			<?php foreach ($produk as $produk) { ?>
+			<option value="<?php echo $produk->id_produk ?>">
+				<?php echo $produk->nama_produk ?>
+			</option>
+			<?php } ?>
+		</select>
+	</div>
+</div>
+
+<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label">Harga</label>
+	<div class="col-md-5">
+		<input type="number" name="harga" class="form-control" placeholder="Harga"
+			value="<?php echo set_value('harga'); ?>" required>
+	</div>
+</div>
+
+
+
+<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label">Qty</label>
+	<div class="col-md-5">
+		<input type="number" name="jumlah" class="form-control" placeholder="Qty"
+			value="<?php echo set_value('jumlah'); ?>" required>
+	</div>
+</div>
+
+<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label">Produk 5</label>
+	<div class="col-md-5">
+		<select name="id_produk" class="form-control">
+			<?php foreach ($produk as $produk) { ?>
+			<option value="<?php echo $produk->id_produk ?>">
+				<?php echo $produk->nama_produk ?>
+			</option>
+			<?php } ?>
+		</select>
+	</div>
+</div>
+
+<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label">Harga</label>
+	<div class="col-md-5">
+		<input type="number" name="harga" class="form-control" placeholder="Harga"
+			value="<?php echo set_value('harga'); ?>" required>
+	</div>
+</div>
+
+
+
+<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label">Qty</label>
+	<div class="col-md-5">
+		<input type="number" name="jumlah" class="form-control" placeholder="Qty"
+			value="<?php echo set_value('jumlah'); ?>" required>
+	</div>
+</div>
+
+
+
+<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label">Harga</label>
+	<div class="col-md-5">
+		<input type="number" name="harga" class="form-control" placeholder="Harga"
+			value="<?php echo set_value('harga'); ?>" required>
+	</div>
+</div>
+
+
+
+
 
 <div class="form-group row">
 	<label class="col-md-2 col-form-label control-label">Diskon</label>
@@ -97,10 +232,20 @@
 <div class="form-group row">
 	<label class="col-md-2 col-form-label control-label">Status Pembayaran</label>
 	<div class="col-md-5">
-		<input type="text" name="status_pembayaran" class="form-control" placeholder="Status Pembayaran"
-			value="<?php echo set_value('status_pembayaran'); ?>" required>
+		<select name="status_pembayaran" class="form-control">
+
+	<option value="Lunas">Lunas</option>
+	<option value="DP">DP</option>
+	<option value="Lebih Bayar">Belum Bayar</option>
+	<option value="Lebih Bayar">Lebih Bayar</option>
+	<option value="Kurang Bayar Bayar">Kurang Bayar</option>
+	<option value="CSR/Souvenir">CSR/Souvenir</option>
+	
+			
+		</select>
 	</div>
 </div>
+
 
 <div class="form-group row">
 	<label class="col-md-2 col-form-label control-label">Tanggal Bayar 1</label>

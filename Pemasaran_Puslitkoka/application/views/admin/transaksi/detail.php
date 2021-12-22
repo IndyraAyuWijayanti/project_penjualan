@@ -11,6 +11,13 @@
 <div class="clearfix"></div><hr>
 <table class="table table-bordered">
                         <thead>
+
+                         <tr>
+                                <td>Tanggal Transaksi</td>
+                                <td>: <?php echo date('d-m-Y',strtotime($transaksi->tanggal_transaksi)) ?>
+                                </td>
+                            </tr>
+
                         <tr>
                                 <th width="20%">Nama Pelanggan</th>
                                 <th><?php echo $transaksi->nama_pelanggan ?></th>
