@@ -1,10 +1,10 @@
 <section class="content">
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-12">
-				<div class="card">
-					<div class="card-body">
-<?php
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <?php
 //panggil; data isi content
 if ($isi) {
     $this->load->view($isi);
@@ -14,8 +14,8 @@ if ($isi) {
 ?>
 
                     </div>
-				</div>
-			</div>
-		</div>
-	</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>

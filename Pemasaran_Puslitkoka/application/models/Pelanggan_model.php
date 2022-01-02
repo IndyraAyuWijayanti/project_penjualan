@@ -3,7 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Pelanggan_model extends CI_Model{
     
-    
+	protected $_table = 'pelanggan';
+
     public function __construct()
     {
         parent::__construct();
@@ -86,7 +87,12 @@ class Pelanggan_model extends CI_Model{
         return $query->result();
     }
    
-
+    public function lihat_nama_pelanggan($id_pelanggan){
+		$query = $this->db->select('*');
+		$query = $this->db->where(['id_pelanggan' => $id_pelanggan]);
+		$query = $this->db->get($this->_table);
+		return $query->row();
+	}
 
     //tambah
     public function tambah($data)
