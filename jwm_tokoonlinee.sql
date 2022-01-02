@@ -99,18 +99,6 @@ CREATE TABLE `detail_transaksi` (
   `sub_total` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `detail_transaksi`
---
-
-INSERT INTO `detail_transaksi` (`kode_transaksi`, `id_produk`, `harga`, `jumlah`, `diskon`, `ongkir`, `sub_total`) VALUES
-('DO0122-001', '21', 500, 1, 0, 500, 500);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `gambar`
---
 
 CREATE TABLE `gambar` (
   `id_gambar` int(11) NOT NULL,
@@ -515,18 +503,7 @@ CREATE TABLE `transaksi` (
   `tanggal_pembayaran` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `transaksi`
---
 
-INSERT INTO `transaksi` (`kode_transaksi`, `id_user`, `id_pelanggan`, `nomor_spk`, `id_jenis_pembayaran`, `id_bank`, `alamat_pengiriman`, `bukti_pembayaran`, `total`, `bayar`, `tanggal_transaksi`, `tanggal_pembayaran`) VALUES
-('DO0122-001', '12', '21', 'spk1', 1, 1, 'jember', 'DO0122-001.jpg', 1000, 1000, '2022-01-02', '2022-01-02');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
 
 CREATE TABLE `users` (
   `id_user` int(11) NOT NULL,
