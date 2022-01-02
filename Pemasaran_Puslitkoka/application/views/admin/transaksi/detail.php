@@ -38,33 +38,20 @@
             <td> <?php echo $transaksi->nomor_spk ?></td>
         </tr>
 
-
-
-        <tr>
-            <th width="20%">Nama Produk</th>
-            <th><?php echo $transaksi->nama_produk ?></th>
-        </tr>
-
-        <tr>
-            <td>Harga</td>
-            <td>: <?php echo number_format($transaksi->harga) ?></td>
-        </tr>
-
-        <tr>
-            <td>Jumlah Produk</td>
-            <td>: <?php echo number_format($transaksi->jumlah) ?></td>
-        </tr>
-
         <tr>
             <td>Ongkir</td>
-            <td>: <?php echo number_format($transaksi->ongkir) ?></td>
+            <td>: <?php echo 'Rp'.number_format($transaksi->ongkir) ?></td>
         </tr>
 
         <tr>
             <td>Diskon</td>
-            <td>: <?php echo number_format($transaksi->diskon) ?></td>
+            <td>: <?php echo 'Rp'.number_format($transaksi->diskon) ?></td>
         </tr>
 
+        <tr>
+            <td>Total</td>
+            <td>: <?php echo 'Rp'.number_format($transaksi->total) ?></td>
+        </tr>
 
         <tr>
             <td>Alamat Pengiriman</td>
@@ -96,7 +83,7 @@
 
         <tr>
             <td>Jumlah Bayar</td>
-            <td>: <?php echo number_format($transaksi->bayar) ?></td>
+            <td>: <?php echo 'Rp'.number_format($transaksi->bayar) ?></td>
         </tr>
 
         <tr>

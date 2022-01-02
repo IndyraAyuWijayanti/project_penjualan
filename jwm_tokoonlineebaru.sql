@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 02, 2022 at 01:05 PM
+-- Generation Time: Jan 02, 2022 at 08:37 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -104,8 +104,7 @@ CREATE TABLE `detail_transaksi` (
 --
 
 INSERT INTO `detail_transaksi` (`kode_transaksi`, `id_produk`, `harga`, `jumlah`, `diskon`, `ongkir`, `sub_total`) VALUES
-('DO0122-001', '25', 500, 1, 0, 0, 500),
-('DO0122-002', '21', 500, 1, 100, 500, 500);
+('DO0122-001', '21', 500, 1, 0, 500, 500);
 
 -- --------------------------------------------------------
 
@@ -508,7 +507,7 @@ CREATE TABLE `transaksi` (
   `nomor_spk` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `id_jenis_pembayaran` int(11) NOT NULL COMMENT '1 = cash, 2= kredit',
   `id_bank` int(11) NOT NULL,
-  `alamat_pengiriman` text COLLATE utf8_unicode_ci NOT NULL,
+  `alamat_pengiriman` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `bukti_pembayaran` varchar(110) COLLATE utf8_unicode_ci NOT NULL,
   `total` int(11) NOT NULL,
   `bayar` int(11) NOT NULL,
@@ -521,8 +520,7 @@ CREATE TABLE `transaksi` (
 --
 
 INSERT INTO `transaksi` (`kode_transaksi`, `id_user`, `id_pelanggan`, `nomor_spk`, `id_jenis_pembayaran`, `id_bank`, `alamat_pengiriman`, `bukti_pembayaran`, `total`, `bayar`, `tanggal_transaksi`, `tanggal_pembayaran`) VALUES
-('DO0122-001', '12', '21', 'spk1', 1, 1, 'Jember', 'DO0122-001.jpg', 1500, 1500, '2022-01-02', '2022-01-02'),
-('DO0122-002', '12', '21', 'spk1', 1, 1, 'Jember', 'DO0122-002.jpg', 900, 900, '2022-01-02', '2022-01-02');
+('DO0122-001', '12', '21', 'spk1', 1, 1, 'jember', 'DO0122-001.jpg', 1000, 1000, '2022-01-02', '2022-01-02');
 
 -- --------------------------------------------------------
 
