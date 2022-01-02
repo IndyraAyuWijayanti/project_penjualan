@@ -1,232 +1,266 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-       <meta charset="utf-8">
-       <meta http-equiv="X-UA-Compatible" content="IE=edge">
-       <title><?php echo $title ?></title>
-       <style type="text/css" media="print">
-            body {
-                 font-family: Arial;
-                 font-size: 12px;
-            }
-            .cetak {
-                   width: 19cm;
-                   height: 27cm;
-                   padding: 1cm;
-            }
-            table {
-                 border: solid thin #000;
-                 border-collapse: collapse;
-            }
-            td, th {
-                padding: 3mm 6mm;
-                text-align: left;
-                vertical-align: top;
-            }
-            th {
-                background-color: #F5F5F5; 
-                font-weight: bold;
-            }
-            h1 {
-               text-align: center;
-               font-size: 18px;
-               text-transform: uppercase;
-            }
-       </style>
-       <style type="text/css" media="screen">
-       body {
-                 font-family: Arial;
-                 font-size: 12px;
-            }
-            .cetak {
-                   width: 19cm;
-                   height: 27cm;
-                   padding: 1cm;
-            }
-            table {
-                 border: solid thin #000;
-                 border-collapse: collapse;
-            }
-            td, th {
-                padding: 3mm 6mm;
-                text-align: left;
-                vertical-align: top;
-            }
-            th {
-                background-color: #F5F5F5; 
-                font-weight: bold;
-            }
-            h1 {
-               text-align: center;
-               font-size: 18px;
-               text-transform: uppercase;
-            }
-       </style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title><?php echo $title ?></title>
+    <style type="text/css" media="print">
+    body {
+        font-family: Arial;
+        font-size: 12px;
+        float: center;
+    }
+
+    .cetak {
+        width: 19cm;
+        height: 27cm;
+        padding: 1cm;
+    }
+
+    .table {
+        border: solid thin #000;
+        border-collapse: collapse;
+    }
+
+    td,
+    th {
+        padding: 3mm 6mm;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    .td1,
+    .tr1 {
+        padding: 3mm 6mm;
+        text-align: left;
+        vertical-align: top;
+        border: solid thin #000;
+    }
+
+    hr {
+        border: solid thin #000;
+    }
+
+
+    h1 {
+        text-align: center;
+        font-size: 18px;
+        text-transform: uppercase;
+    }
+    </style>
+    <style type="text/css" media="screen">
+    body {
+        font-family: Arial;
+        font-size: 12px;
+    }
+
+    .cetak {
+        width: 19cm;
+        height: 27cm;
+        padding: 1cm;
+    }
+
+    .table {
+        border: solid thin #000;
+        border-collapse: collapse;
+    }
+
+    .td,
+    .th {
+        padding: 3mm 6mm;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    th {
+        background-color: #F5F5F5;
+        font-weight: bold;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 18px;
+        text-transform: uppercase;
+    }
+    </style>
 </head>
+
 <body onload="print()">
-     <div class="cetak">
-       
-        <table class="table table-bordered">
-                        <thead>
-                        <tr>
-                                <th width="20%">Nama Pelanggan</th>
-                                <th><?php echo $transaksi->nama_pelanggan ?></th>
-                            </tr>
-                            <tr>
-                                <th width="20%">KODE TRANSAKSI</th>
-                                <th><?php echo $transaksi->kode_transaksi ?></th>
-                            </tr>
-                            <tr>
-                                <th width="20%">Nomor SPK</th>
-                                <th><?php echo $transaksi->nomor_spk ?></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                              <tr>
-                                <th width="20%">Nama Produk</th>
-                                <th><?php echo $transaksi->nama_produk ?></th>
-                            </tr>
+    <div class="cetak">
+        <table class="table" width="100%">
+            <tbody>
+                <?php $i=1; foreach($tgltransaksi as $tgltransaksi){ ?>
+                <tr>
+                    <td class="td1">Pusat Penelitian Kopi dan Kakao Indonesia<br>Jl. PB. Sudirman 90. Jember</td>
+                    <td class="td1">Surat Perintah<br>Penyerahan Barang (DO)</td>
+                    <td class="td1">No. DO
+                        <?php echo $tgltransaksi->kode_transaksi ?><br>Tgl.
+                        DO<?php echo $tgltransaksi->tanggal_transaksi ?>
+                    </td>
+                </tr>
+                <?php $i++; } ?>
+            </tbody>
+        </table>
+        <table class="table" width="100%">
+            <tbody>
+                <?php $i=1; foreach($transaksipelanggan as $transaksipelanggan){ ?>
+                <tr>
+                    <td class="td1">Diserahkan kepada :
+                        <?php echo $transaksipelanggan->id_pelanggan.'|'.$transaksipelanggan->nama_pelanggan ?><br>
+                        Penerima : <?php echo $transaksipelanggan->alamat_pengiriman ?>
+                        <p>Jenis Barang</p>
+                    </td>
+                </tr>
+                <?php $i++; } ?>
+            </tbody>
+        </table>
+        <table class="table table-bordered" width="100%">
+            <?php $i=1; foreach($transaksi as $transaksi){ ?>
 
-                             <tr>
-                                <td>Harga</td>
-                                <td>: <?php echo number_format($transaksi->harga) ?></td>
-                            </tr>
-                            
-                            <tr>
-                                <td>Jumlah Produk</td>
-                                <td>: <?php echo number_format($transaksi->total_jumlahproduk) ?></td>
-                            </tr>
+            <?php 
+                function penyebut($nilai) {
+                $nilai = abs($nilai);
+                $huruf = array("", "Satu", "Dua", "Tiga", "Empat", "Lima", "Enam", "Tujuh", "Delapan", "Sembilan", "Sepuluh", "Sebelas");
+                $temp = "";
+                if ($nilai < 12) {
+                    $temp = " ". $huruf[$nilai];
+                } else if ($nilai <20) {
+                    $temp = penyebut($nilai - 10). " Belas";
+                } else if ($nilai < 100) {
+                    $temp = penyebut($nilai/10)." Puluh". penyebut($nilai % 10);
+                } else if ($nilai < 200) {
+                    $temp = " Seratus" . penyebut($nilai - 100);
+                } else if ($nilai < 1000) {
+                    $temp = penyebut($nilai/100) . " Ratus" . penyebut($nilai % 100);
+                } else if ($nilai < 2000) {
+                    $temp = " Seribu" . penyebut($nilai - 1000);
+                } else if ($nilai < 1000000) {
+                    $temp = penyebut($nilai/1000) . " Ribu" . penyebut($nilai % 1000);
+                } else if ($nilai < 1000000000) {
+                    $temp = penyebut($nilai/1000000) . " Juta" . penyebut($nilai % 1000000);
+                } else if ($nilai < 1000000000000) {
+                    $temp = penyebut($nilai/1000000000) . " Milyar" . penyebut(fmod($nilai,1000000000));
+                } else if ($nilai < 1000000000000000) {
+                    $temp = penyebut($nilai/1000000000000) . " Trilyun" . penyebut(fmod($nilai,1000000000000));
+                }     
+                return $temp;
+                }
 
-                             <tr>
-                                <td>Ongkir</td>
-                                <td>: <?php echo number_format($transaksi->ongkir) ?></td>
-                            </tr>
-
-                            <tr>
-                                <td>Diskon</td>
-                                <td>: <?php echo number_format($transaksi->diskon) ?></td>
-                            </tr>
-
-                            <tr>
-                                <th width="20%">Alamat Pengiriman</th>
-                                <th><?php echo $transaksi->alamat_pengiriman ?></th>
-                            </tr>
-
-
-
-                            <tr>
-                                <td>Status Pembayaran</td>
-                                <td>: <?php echo $transaksi->status_pembayaran ?></td>
-                            </tr>
-
-
-                            <tr>
-                                <td>Tanggal Bayar 1</td>
-                                <td>: <?php echo date('d-m-Y',strtotime($transaksi->tgl_bayar1)) ?>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>Bukti Bayar 1</td>
-                                <td>: <?php if($transaksi->bukti_bayar1 =="") { echo 'Belum ada'; }else {
-                                ?>
-                                        <img src="<?php echo base_url('assets/upload/image/'.$transaksi->bukti_bayar1) ?>" class="img img-thumbnail" width="200"> 
-                                 <?php } ?>
-                                 </td>
-                            </tr>
-
-                             <tr>
-                                <td>Jumlah Bayar 1</td>
-                                <td>: <?php echo number_format($transaksi->jumlah_bayar1) ?></td>
-                            </tr>
-
-                             <tr>
-                                <th width="20%">Bank 1</th>
-                                <th><?php echo $transaksi->nama_bank ?></th>
-                            </tr>
-
-
-                            <tr>
-                                <td>Tanggal Bayar 2</td>
-                                <td>: <?php echo date('d-m-Y',strtotime($transaksi->tgl_bayar2)) ?>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>Bukti Bayar 2</td>
-                                <td>: <?php if($transaksi->bukti_bayar2 =="") { echo 'Belum ada'; }else {
-                                ?>
-                                        <img src="<?php echo base_url('assets/upload/image/'.$transaksi->bukti_bayar2) ?>" class="img img-thumbnail" width="200"> 
-                                 <?php } ?>
-                                 </td>
-                            </tr>
-
-                             <tr>
-                                <td>Jumlah Bayar 2</td>
-                                <td>: <?php echo number_format($transaksi->jumlah_bayar2) ?></td>
-                            </tr>
-
-                             <tr>
-                                <th width="20%">Bank 2</th>
-                                <th><?php echo $transaksi->nama_bank ?></th>
-                            </tr>
-
-
-                            <tr>
-                                <td>Tanggal Bayar 3</td>
-                                <td>: <?php echo date('d-m-Y',strtotime($transaksi->tgl_bayar3)) ?>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>Bukti Bayar 3</td>
-                                <td>: <?php if($transaksi->bukti_bayar3 =="") { echo 'Belum ada'; }else {
-                                ?>
-                                        <img src="<?php echo base_url('assets/upload/image/'.$transaksi->bukti_bayar3) ?>" class="img img-thumbnail" width="200"> 
-                                 <?php } ?>
-                                 </td>
-                            </tr>
-
-                             <tr>
-                                <td>Jumlah Bayar 3</td>
-                                <td>: <?php echo number_format($transaksi->jumlah_bayar3) ?></td>
-                            </tr>
-
-                             <tr>
-                                <th width="20%">Bank 3</th>
-                                <th><?php echo $transaksi->nama_bank ?></th>
-                            </tr>
-
-
-                        </tbody>
-                    </table>
-
-                    <hr>
-
-                    <table class="table table-bordered" width="100%">
-                        <thead>
-                            <tr class="bg-success">
-                                <th>NO</th>
-                                <th>KODE PRODUK</th>
-                                <th>NAMA PRODUK</th>
-                                <th>JUMLAH</th>
-                                <th>HARGA</th>
-                                <th>SUBTOTAL</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $i=1; foreach($transaksi as $transaksi){ ?>
-                            <tr>
-                                <td><?php echo $i ?></td>
-                                <td><?php echo $transaksi->kode_produk ?></td>
-                                <td><?php echo $transaksi->nama_produk ?></td>
-                                <td><?php echo number_format($transaksi->jumlah) ?></td>
-                                <td><?php echo number_format($transaksi->harga) ?></td>
-                                <td><?php echo number_format($transaksi->total_pembayaran) ?></td>
-                            </tr>
-                            <?php $i++; } ?>
-                        </tbody>
-                    </table>
-                    </div>
+                function terbilang($nilai) {
+                if($nilai<0) {
+                    $hasil = "Minus ". trim(penyebut($nilai));
+                } else {
+                    $hasil = trim(penyebut($nilai));
+                }     		
+                return $hasil;
+                }
+                $angka = $transaksi->total;
+                ?>
+            <thead>
+                <tr class="bg-success">
+                    <th>No</th>
+                    <th>Uraian</th>
+                    <th>Qty</th>
+                    <th>Harga</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="tr">
+                    <td class="td"><?php echo $i ?></td>
+                    <td class="td"><?php echo $transaksi->nama_produk ?></td>
+                    <td class="td"><?php echo number_format($transaksi->jumlah) ?></td>
+                    <td class="td"><?php echo number_format($transaksi->harga) ?></td>
+                    <td class="td"><?php echo number_format($transaksi->sub_total) ?></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td class="td">Biaya pengiriman<br>Terbilang : <?=  terbilang($angka).' Rupiah';?> </td>
+                    <td colspan='3'></td>
+                    <td class="td">
+                        <?php echo 'Rp'.number_format($transaksi->ongkir) ?><br>
+                        <?php echo 'Rp'.number_format($transaksi->total) ?>
+                    </td>
+                </tr>
+            </tfoot>
+            <?php $i++; } ?>
+        </table>
+        <table class="table" width="100%">
+            <tbody>
+                <tr>
+                    <td class="td1" align="center">Dibuat oleh<br>Kasub.Bag. Pemasaran</td>
+                    <td class="td1" align="center">Diperiksa Oleh<br>Kasub.Bag Keuangan</td>
+                    <td class="td1" align="center">Disetujui oleh<br>Pimpinan</td>
+                    <td class="td1" align="center">Yang menyerahkan <br>Kasub. Bag Produksi BT</td>
+                </tr>
+                </tr>
+                <tr>
+                    <td class='td1' align="center">
+                        <p align="center">
+                        <p align="center">
+                            <strong></strong>
+                        </p>
+                        <p align="center">
+                            <strong>&nbsp;</strong>
+                        </p>
+                        <p align="center">
+                            <strong>&nbsp;</strong>
+                        </p>
+                        <p align="center">
+                            <strong><strong><?='Dwi Nugroho, SP., M.Sc'?></strong></strong>
+                        </p>
+                    </td>
+                    <td class='td1' align="center">
+                        <p align="center">
+                        <p align="center">
+                            <strong></strong>
+                        </p>
+                        <p align="center">
+                            <strong>&nbsp;</strong>
+                        </p>
+                        <p align="center">
+                            <strong>&nbsp;</strong>
+                        </p>
+                        <p align="center">
+                            <strong><strong><?='Wahyudi Priandono, SE'?></strong></strong>
+                        </p>
+                    </td>
+                    <td class='td1' align="center">
+                        <p align="center">
+                        <p align="center">
+                            <strong></strong>
+                        </p>
+                        <p align="center">
+                            <strong>&nbsp;</strong>
+                        </p>
+                        <p align="center">
+                            <strong>&nbsp;</strong>
+                        </p>
+                        <p align="center">
+                            <strong><strong><?='Ir. Budi Sumartono, MP'?></strong></strong>
+                        </p>
+                    </td>
+                    <td class='td1' align="center">
+                        <p align="center">
+                        <p align="center">
+                            <strong></strong>
+                        </p>
+                        <p align="center">
+                            <strong>&nbsp;</strong>
+                        </p>
+                        <p align="center">
+                            <strong>&nbsp;</strong>
+                        </p>
+                        <p align="center">
+                            <strong><strong><?='Ir. Agus Saryono'?></strong></strong>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
+
 </html>

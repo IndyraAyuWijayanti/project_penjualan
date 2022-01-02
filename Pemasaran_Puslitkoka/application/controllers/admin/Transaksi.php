@@ -287,10 +287,10 @@ class Transaksi extends CI_Controller {
     }
 
     //Detail
-      public function detail($id_transaksi)
+      public function detail($kode_transaksi)
        {
-        $transaksi = $this->transaksi_model->detail($id_transaksi);
-        $dataTransaksi = $this->transaksi_model->listing_transaksi($id_transaksi);
+        $transaksi = $this->transaksi_model->detail($kode_transaksi);
+        $dataTransaksi = $this->transaksi_model->listing_transaksi($kode_transaksi);
         $data = array('title'        => 'Data Pelanggan',
                       'transaksi'    => $transaksi,
                       'dataTransaksi'=> $dataTransaksi,
@@ -318,13 +318,13 @@ class Transaksi extends CI_Controller {
     //Cetak
     public function cetak($kode_transaksi)
     {
-        
-        $transaksi        = $this->transaksi_model->kode_transaksi($kode_transaksi);
-       
-
+        $tgltransaksi = $this->transaksi_model->listing_transaksi($kode_transaksi);
+        $transaksipelanggan = $this->transaksi_model->listing_transaksi($kode_transaksi);
+        $transaksi     = $this->transaksi_model->listing_transaksi($kode_transaksi);
         $data = array(  'title'              => 'Cetak Transaksi',
                         'transaksi'          => $transaksi,
-                      
+                        'tgltransaksi'       => $tgltransaksi,
+                        'transaksipelanggan' => $transaksipelanggan,
                     );
         $this->load->view('admin/transaksi/cetak', $data, FALSE);
     }

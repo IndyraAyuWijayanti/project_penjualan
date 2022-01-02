@@ -43,26 +43,19 @@ if ($this->session->flashdata('sukses')) {
             <td><?= $transaksi->jumlah ?></td>
             <!-- <td><?= $transaksi->status_pembayaran?></td> -->
 
-
-
-
             <td>
-
                 <div class="btn-group">
                     <a href="<?php echo base_url('admin/transaksi/detail/'.$transaksi->kode_transaksi) ?>"
                         class="btn btn-success btn-sm"><i class="fa fa-eye"></i>Detail</a>
-
-                    <a href="<?php echo base_url('admin/transaksi/edit/'.$transaksi->kode_transaksi) ?>"
-                        class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>Edit</a>
-
-
+                    <!-- <a href="<?php echo base_url('admin/transaksi/edit/'.$transaksi->kode_transaksi) ?>"
+                        class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>Edit</a> -->
+                </div>
+                <div class="btn-group">
                     <a href="<?php echo base_url('admin/transaksi/cetak/'.$transaksi->kode_transaksi) ?>"
                         target="_blank" class="btn btn-info btn-sm"><i class="fa fa-print"></i>Cetak</a>
-
-
                 </div>
-                <div class="clearfix"></div>
-                <br>
+                <!-- <div class="clearfix"></div> -->
+                <!-- <br> -->
                 <div class="btn-group">
                     <a href="<?php echo base_url('admin/transaksi/pdf/'.$transaksi->kode_transaksi) ?>"
                         class="btn btn-danger btn-sm"><i class="fa fa-file-pdf-o"></i>Unduh PDF</a>
