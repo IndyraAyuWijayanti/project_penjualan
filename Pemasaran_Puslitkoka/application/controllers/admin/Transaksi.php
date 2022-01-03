@@ -96,13 +96,29 @@ class Transaksi extends CI_Controller {
 			// for ($i=0; $i < $jumlah_barang_dibeli ; $i++) { 
 			// 	$this->transaksi_model->min_stok($data_detail_penjualan[$i]['jumlah'], $data_detail_penjualan[$i]['id_produk']) or die('gagal min stok');
 			// }
-			$this->session->set_flashdata('sukses', 'Data <strong>Transaksi</strong> Berhasil Dibuat!');
-			redirect(base_url('admin/transaksi'),'refresh');
 		// } else {
 		// 	$this->session->set_flashdata('sukses', 'Data <strong>Transaksi</strong> Gagal Dibuat!');
 		// 	redirect(base_url('admin/transaksi/tambah'),'refresh');
 		// }
-	}
+        $id_pembayaran = $this->input->post('id_jenis_pembayaran_hidden');
+        
+        $data_angsuran = [];
+        if( $id_pembayaran == '2'){
+            $data_angsuran['kode_transaksi'] = $this->input->post('kode_transaksi');
+            $data_angsuran['angsuran_ke'] = 1;
+            $data_angsuran['bayar']= $this->input->post('bayar_hidden');
+            $data_angsuran['id_bank']= $this->input->post('id_bank_hidden');
+            $data_angsuran['tanggal_bayar_angsuran'] = date('Y/m/d');
+            $data_angsuran['bukti_bayar']= $this->_uploadImage();
+            $this->transaksi_model->tambahangsuran($data_angsuran);
+            
+            $this->session->set_flashdata('sukses', 'Data <strong>Transaksi</strong> Berhasil Dibuat!');
+            redirect(base_url('admin/transaksi'),'refresh');
+        }      
+            
+        $this->session->set_flashdata('sukses', 'Data <strong>Transaksi</strong> Berhasil Dibuat!');
+        redirect(base_url('admin/transaksi'),'refresh');
+}
 
     public function get_all_produk(){
 		$data = $this->transaksi_model->lihat_nama_produk($_POST['id_produk']);
@@ -291,9 +307,13 @@ class Transaksi extends CI_Controller {
        {
         $transaksi = $this->transaksi_model->detail($kode_transaksi);
         $dataTransaksi = $this->transaksi_model->list_transaksi($kode_transaksi);
+        $aa = $this->transaksi_model->data_angsuran($kode_transaksi);
+        // var_dump($dataangsuran);
+        // die;
         $data = array('title'        => 'Data Pelanggan',
                       'transaksi'    => $transaksi,
                       'dataTransaksi'=> $dataTransaksi,
+                      'aa'    => $aa,
                       'isi'          => 'admin/transaksi/detail'
                      );
                 $this->load->view('admin/layout/wrapper', $data, FALSE);
@@ -377,8 +397,9 @@ class Transaksi extends CI_Controller {
         $tahun= $this->transaksi_model->gettahun();
         $data = array(  'title'              => 'Laporan Data penjualan',
                         'tahun'          => $tahun,
+                        'isi'          => 'admin/transaksi/report_penjualan'
                     );
-        $this->load->view('admin/transaksi/report_penjualan', $data, FALSE);
+        $this->load->view('admin/layout/wrapper', $data, FALSE);
      }
  
      public function laporanbybulan()
@@ -390,12 +411,12 @@ class Transaksi extends CI_Controller {
          $bulanawal1 = htmlspecialchars($this->input->post('bulanawal1', true));
          $bulanakhir = htmlspecialchars($this->input->post('bulanakhir', true));
  
-         $data['bybulan'] = $this->m_penjualan->filterbybulan($tahun1, $bulanawal1, $bulanakhir);
-         $data['sum'] = $this->m_penjualan->sumbulan($tahun1, $bulanawal1, $bulanakhir);
+         $data['bybulan'] = $this->transaksi_model->filterbybulan($tahun1, $bulanawal1, $bulanakhir);
+         $data['sum'] = $this->transaksi_model->sumbulan($tahun1, $bulanawal1, $bulanakhir);
          $data['tahun'] = $tahun1;
          $data['bulanawal'] = $bulanawal1;
          $data['bulanakhir'] = $bulanakhir;
-         $this->load->view('report/laporan_by_bulan_penjualan', $data);
+         $this->load->view('admin/transaksi/report/laporan_by_bulan_penjualan', $data);
          
      }
  
@@ -406,12 +427,47 @@ class Transaksi extends CI_Controller {
  
          $tahun2 = htmlspecialchars($this->input->post('tahun2', true));
  
-         $data['bytahun'] = $this->m_penjualan->filterbytahun($tahun2);
-         $data['sum'] = $this->m_penjualan->sum($tahun2);
+         $data['bytahun'] = $this->transaksi_model->filterbytahun($tahun2);
+         $data['sum'] = $this->transaksi_model->sum($tahun2);
          $data['tahun'] = $tahun2;
-         $this->load->view('report/laporan_by_tahun_penjualan', $data);
+         $this->load->view('admin/transaksi/report/laporan_by_tahun_penjualan', $data);
      }
     
+      //Tambah transaksi
+    public function tambahangsuran($kode_transaksi)
+    {
+        
+        $transaksi = $this->transaksi_model->detail($kode_transaksi);
+        $dataTransaksi = $this->transaksi_model->list_transaksi($kode_transaksi);
+        $aa = $this->transaksi_model->data_angsuran($kode_transaksi);
+        $bb = $this->transaksi_model->hitung_data_angsuran($kode_transaksi);
+
+        $data = array('title' => 'Tambah Pembayaran Angsuran',
+                      'transaksi'    => $transaksi,
+                      'dataTransaksi'=> $dataTransaksi,
+                      'aa'    => $aa,
+                      'bb'    => $bb,
+                'isi'               => 'admin/transaksi/pembayaranangasuran'
+                );
+        $this->load->view('admin/layout/wrapper', $data, FALSE);
+    }
+
+     //proses tambah kredit
+     public function proses_tambahangsuran($kode_transaksi){
+		
+		$data_bayar = [
+			'kode_transaksi' => $this->input->post('kode_transaksi', true),
+			'angsuran_ke' => $this->input->post('angsuran_ke', true),
+			'bayar' => $this->input->post('bayar_hidden', true),
+			'id_bank' => $this->input->post('id_bank_hidden', true),
+			'tanggal_bayar_angsuran' => date('Y/m/d'),
+			'bukti_bayar' => $this->_uploadImage(),
+		];
+
+		$this->transaksi_model->tambahangsuran($data_bayar);
+        $this->session->set_flashdata('sukses', 'Pembayaran <strong>Angsuran</strong> Berhasil Dibuat!');
+        redirect(base_url('admin/transaksi/detail/'.$kode_transaksi),'refresh');
+}
 }
 
 /* End of file Transaksi.php */

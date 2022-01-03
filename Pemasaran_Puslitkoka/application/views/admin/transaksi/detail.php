@@ -13,6 +13,17 @@
 </p>
 <div class="clearfix"></div>
 <hr>
+<?php
+//notifikasi
+if ($this->session->flashdata('sukses')) {
+    echo '<div class="alert alert-success alert-dismissible">';
+    echo '  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>';
+    echo $this->session->flashdata('sukses');
+    echo'</div>';
+}
+?>
 <table class="table table-bordered">
     <thead>
 
@@ -58,13 +69,7 @@
             <td>: <?php echo $transaksi->alamat_pengiriman ?></td>
         </tr>
 
-
-        <!-- <tr>
-            <td>Status Pembayaran</td>
-            <td>: <?php echo $transaksi->status_pembayaran ?></td>
-        </tr> -->
-
-
+        <?php if ($transaksi->id_jenis_pembayaran == 1){?>
         <tr>
             <td>Tanggal Bayar </td>
             <td>: <?php echo date('d-m-Y',strtotime($transaksi->tanggal_pembayaran)) ?>
@@ -90,7 +95,9 @@
             <th width="20%">Bank</th>
             <th><?php echo $transaksi->nama_bank ?></th>
         </tr>
-
+        <?php }elseif ($transaksi->id_jenis_pembayaran == 2) {
+            
+        }?>
 
     </tbody>
 </table>
@@ -109,41 +116,60 @@
         </tr>
     </thead>
     <tbody>
-        <?php $i=1; foreach($dataTransaksi as $transaksi){ ?>
+        <?php $i=1; foreach($dataTransaksi as $dataTransaksi){ ?>
         <tr>
             <td><?php echo $i ?></td>
-            <td><?php echo $transaksi->kode_produk ?></td>
-            <td><?php echo $transaksi->nama_produk ?></td>
-            <td><?php echo number_format($transaksi->jumlah) ?></td>
-            <td><?php echo number_format($transaksi->harga) ?></td>
-            <td><?php echo number_format($transaksi->sub_total) ?></td>
+            <td><?php echo $dataTransaksi->kode_produk ?></td>
+            <td><?php echo $dataTransaksi->nama_produk ?></td>
+            <td><?php echo number_format($dataTransaksi->jumlah) ?></td>
+            <td><?php echo number_format($dataTransaksi->harga) ?></td>
+            <td><?php echo number_format($dataTransaksi->sub_total) ?></td>
         </tr>
         <?php $i++; } ?>
     </tbody>
 </table>
 
-
 <hr>
-
-<!-- <table class="table table-bordered" width="100%">
+<?php if ($transaksi->id_jenis_pembayaran == 2){?>
+<?php 
+if ($transaksi->total != $transaksi->totalbayar) {?>
+<a href="<?php echo base_url('admin/transaksi/tambahangsuran' . "/" . $transaksi->kode_transaksi) ?>"
+    class="btn btn-success btn-sm btn-show-add">
+    <span class="icon text-white-50">
+        <i class="fa fa-plus"></i>
+    </span>
+    <span class="text">Bayar Angsuran</span>
+</a>
+<?php } ?>
+<p>
+<table class="table table-bordered" width="100%">
     <thead>
         <tr class="bg-success">
-
-            <th>Total Jumlah Produk</th>
-            <th>Total Tagihan</th>
-            <th>Total Pembayaran</th>
+            <th>Angsuran Ke</th>
+            <th>Nominal Bayar</th>
+            <th>Bank</th>
+            <th>Bukti Bayar</th>
+            <th>Tanggal Bayar</th>
 
         </tr>
     </thead>
     <tbody>
-        <?php $i=1; foreach($dataTransaksi as $transaksi){ ?>
+        <?php $i=1; foreach($aa as $bb){ ?>
         <tr>
-
-
-            <td><?php echo number_format($transaksi->total_jumlahproduk) ?></td>
-            <td><?php echo number_format($transaksi->total_tagihan) ?></td>
-            <td><?php echo number_format($transaksi->total_pembayaran) ?></td>
+            <td><?php echo $bb['angsuran_ke'] ?></td>
+            <td><?php echo number_format($bb['bayar']) ?></td>
+            <?php if ($bb['id_bank']  == 1) { ?>
+            <td>Tunai</td>
+            <?php } else if ($bb['id_bank'] == 2) {?>
+            <td>BRI </td>
+            <?php } else if ($bb['id_bank'] == 3) {?>
+            <td>Mandiri </td>
+            <?php } ?>
+            <td> <img src="<?php echo base_url('assets/upload/image/'.$bb['bukti_bayar']) ?>" height="100" width="100">
+            </td>
+            <td><?php echo $bb['tanggal_bayar_angsuran']?></td>
         </tr>
         <?php $i++; } ?>
     </tbody>
-</table> -->
+</table>
+<?php }?>

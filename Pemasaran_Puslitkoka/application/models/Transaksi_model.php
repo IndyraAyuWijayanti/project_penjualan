@@ -41,7 +41,10 @@ class Transaksi_model extends CI_Model{
    
      public function detail($kode_transaksi)
     { 
-        $this->db->select(' transaksi.*, users.*, pelanggan.nama_pelanggan, bank.*, produk.*, detail_transaksi.*');
+        $this->db->select(' transaksi.*, users.*,
+        sum(angsuran.bayar) as totalbayar,angsuran.bayar,angsuran.tanggal_bayar_angsuran,angsuran.bukti_bayar as buktibayarangsuran
+        ,angsuran.angsuran_ke
+        , pelanggan.nama_pelanggan, bank.*, produk.*, detail_transaksi.*');
         $this->db->from('transaksi');
 
         //JOIN
@@ -50,6 +53,8 @@ class Transaksi_model extends CI_Model{
         $this->db->join('detail_transaksi', 'detail_transaksi.kode_transaksi = transaksi.kode_transaksi', );
         $this->db->join('produk', 'produk.id_produk = detail_transaksi.id_produk');
         $this->db->join('bank', 'bank.id_bank = transaksi.id_bank');
+        $this->db->join('jenis_pembayaran', 'jenis_pembayaran.id_jenis_pembayaran = transaksi.id_jenis_pembayaran');
+        $this->db->join('angsuran', 'angsuran.kode_transaksi = transaksi.kode_transaksi', 'left');
       
         $this->db->where('transaksi.kode_transaksi', $kode_transaksi);
 
@@ -58,6 +63,25 @@ class Transaksi_model extends CI_Model{
        $query = $this->db->get();
        return $query->row();
     }
+
+    public function data_angsuran($kode_transaksi)
+	{
+		$this->db->select('*');
+		$this->db->from('transaksi');
+		$this->db->join('angsuran', 'transaksi.kode_transaksi = angsuran.kode_transaksi');
+		$this->db->where('transaksi.kode_transaksi', $kode_transaksi);
+        $query = $this->db->get();
+        return $query->result_array();
+	}
+
+    public function hitung_data_angsuran($kode_transaksi)
+	{
+		$this->db->select('*');
+		$this->db->from('transaksi');
+		$this->db->join('angsuran', 'transaksi.kode_transaksi = angsuran.kode_transaksi');
+		$this->db->where('transaksi.kode_transaksi', $kode_transaksi);
+		return $this->db->get()->num_rows();
+	}
 
     //Listing transaksi (untuk menampilkan di tabel pada detail transaksi)
     public function listing_transaksi($kode_transaksi)
@@ -165,6 +189,7 @@ class Transaksi_model extends CI_Model{
     {
         $this->db->select('transaksi.*,
                             users.nama,
+                            SUM(angsuran.bayar) as totalbayar,
                             pelanggan.nama_pelanggan,
                             bank.nama_bank,
                             produk.nama_produk,
@@ -177,6 +202,7 @@ class Transaksi_model extends CI_Model{
         $this->db->join('detail_transaksi', 'detail_transaksi.kode_transaksi = transaksi.kode_transaksi', 'left');
         $this->db->join('produk', 'produk.id_produk = detail_transaksi.id_produk', 'left');
         $this->db->join('bank', 'bank.id_bank = transaksi.id_bank', 'left');
+        $this->db->join('angsuran', 'angsuran.kode_transaksi = transaksi.kode_transaksi', 'left');
       
 
         //END JOIN
@@ -209,6 +235,10 @@ class Transaksi_model extends CI_Model{
     public function tambahdetail($data)
     {
         $this->db->insert_batch('detail_transaksi', $data);    
+    }
+    public function tambahangsuran($data)
+    {
+        $this->db->insert('angsuran', $data);    
     }
 
     //edit
@@ -264,6 +294,17 @@ class Transaksi_model extends CI_Model{
         join detail_transaksi b on a.kode_transaksi=b.kode_transaksi 
         join produk c on b.id_produk=c.id_produk 
         where YEAR(a.tanggal_transaksi) = '$tahun2' ORDER BY a.tanggal_transaksi ASC");
+        return $query->result();
+    }
+    
+	function sumbulan($tahun1, $bulanawal, $bulanakhir)
+    {
+        $query = $this->db->query("SELECT SUM(b.sub_total) as grand from transaksi a join detail_transaksi b on a.kode_transaksi=b.kode_transaksi join produk c on b.id_produk=c.id_produk where YEAR(a.tanggal_transaksi) = '$tahun1' and MONTH(a.tanggal_transaksi) BETWEEN '$bulanawal' and '$bulanakhir' ORDER BY a.tanggal_transaksi ASC");
+        return $query->result();
+    }
+    function sum($tahun2)
+    {
+        $query = $this->db->query("SELECT SUM(a.total) as grand from transaksi a join detail_transaksi b on a.kode_transaksi=b.kode_transaksi join produk c on b.id_produk=c.id_produk where YEAR(a.tanggal_transaksi) = '$tahun2' ORDER BY a.tanggal_transaksi ASC");
         return $query->result();
     }
 }

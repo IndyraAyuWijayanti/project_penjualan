@@ -40,7 +40,7 @@ if ($this->session->flashdata('sukses')) {
             <td> <?php if ($transaksi->id_jenis_pembayaran == '1') { ?>
                 <span>Cash</span>
                 <?php } elseif ($transaksi->id_jenis_pembayaran== '2') { ?>
-                <span>Kredit Bulanan</span>
+                <span>Angsuran</span>
                 <?php } ?>
             </td>
             <td>
@@ -51,7 +51,11 @@ if ($this->session->flashdata('sukses')) {
                 <span>Belum Lunas</span>
                 <?php } ?>
                 <?php } elseif ($transaksi->id_jenis_pembayaran== '2') { ?>
-                <span>Angsuran</span>
+                <?php if ($transaksi->total == $transaksi->totalbayar) { ?>
+                <span>Lunas</span>
+                <?php } else { ?>
+                <span>Belum Lunas</span>
+                <?php } ?>
                 <?php } ?>
             </td>
 
