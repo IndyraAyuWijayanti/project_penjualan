@@ -90,7 +90,7 @@
     <div class="cetak">
         <table class="table" width="100%">
             <tbody>
-                <?php $i=1; foreach($tgltransaksi as $tgltransaksi){ ?>
+                <?php foreach($tgltransaksi as $tgltransaksi){ ?>
                 <tr>
                     <td class="td1">Pusat Penelitian Kopi dan Kakao Indonesia<br>Jl. PB. Sudirman 90. Jember</td>
                     <td class="td1">Surat Perintah<br>Penyerahan Barang (DO)</td>
@@ -99,7 +99,7 @@
                         DO<?php echo $tgltransaksi->tanggal_transaksi ?>
                     </td>
                 </tr>
-                <?php $i++; } ?>
+                <?php } ?>
             </tbody>
         </table>
         <table class="table" width="100%">
@@ -116,47 +116,7 @@
             </tbody>
         </table>
         <table class="table table-bordered" width="100%">
-            <?php $i=1; foreach($transaksi as $transaksi){ ?>
 
-            <?php 
-                function penyebut($nilai) {
-                $nilai = abs($nilai);
-                $huruf = array("", "Satu", "Dua", "Tiga", "Empat", "Lima", "Enam", "Tujuh", "Delapan", "Sembilan", "Sepuluh", "Sebelas");
-                $temp = "";
-                if ($nilai < 12) {
-                    $temp = " ". $huruf[$nilai];
-                } else if ($nilai <20) {
-                    $temp = penyebut($nilai - 10). " Belas";
-                } else if ($nilai < 100) {
-                    $temp = penyebut($nilai/10)." Puluh". penyebut($nilai % 10);
-                } else if ($nilai < 200) {
-                    $temp = " Seratus" . penyebut($nilai - 100);
-                } else if ($nilai < 1000) {
-                    $temp = penyebut($nilai/100) . " Ratus" . penyebut($nilai % 100);
-                } else if ($nilai < 2000) {
-                    $temp = " Seribu" . penyebut($nilai - 1000);
-                } else if ($nilai < 1000000) {
-                    $temp = penyebut($nilai/1000) . " Ribu" . penyebut($nilai % 1000);
-                } else if ($nilai < 1000000000) {
-                    $temp = penyebut($nilai/1000000) . " Juta" . penyebut($nilai % 1000000);
-                } else if ($nilai < 1000000000000) {
-                    $temp = penyebut($nilai/1000000000) . " Milyar" . penyebut(fmod($nilai,1000000000));
-                } else if ($nilai < 1000000000000000) {
-                    $temp = penyebut($nilai/1000000000000) . " Trilyun" . penyebut(fmod($nilai,1000000000000));
-                }     
-                return $temp;
-                }
-
-                function terbilang($nilai) {
-                if($nilai<0) {
-                    $hasil = "Minus ". trim(penyebut($nilai));
-                } else {
-                    $hasil = trim(penyebut($nilai));
-                }     		
-                return $hasil;
-                }
-                $angka = $transaksi->total;
-                ?>
             <thead>
                 <tr class="bg-success">
                     <th>No</th>
@@ -166,6 +126,7 @@
                     <th>Total</th>
                 </tr>
             </thead>
+            <?php $i=1; foreach($dataTransaksi as $transaksi){ ?>
             <tbody>
                 <tr class="tr">
                     <td class="td"><?php echo $i ?></td>
@@ -175,17 +136,19 @@
                     <td class="td"><?php echo number_format($transaksi->sub_total) ?></td>
                 </tr>
             </tbody>
+            <?php $i++; } ?>
             <tfoot>
+                <?php foreach($pembayaran as $transaksii){ ?>
                 <tr>
-                    <td class="td">Biaya pengiriman<br>Terbilang : <?=  terbilang($angka).' Rupiah';?> </td>
+                    <td class="td">Biaya pengiriman<br>Terbilang : <?=  ' Rupiah';?> </td>
                     <td colspan='3'></td>
                     <td class="td">
-                        <?php echo 'Rp'.number_format($transaksi->ongkir) ?><br>
-                        <?php echo 'Rp'.number_format($transaksi->total) ?>
+                        <?php echo 'Rp'.number_format($transaksii->ongkir) ?><br>
+                        <?php echo 'Rp'.number_format($transaksii->total) ?>
                     </td>
                 </tr>
+                <?php } ?>
             </tfoot>
-            <?php $i++; } ?>
         </table>
         <table class="table" width="100%">
             <tbody>

@@ -290,7 +290,7 @@ class Transaksi extends CI_Controller {
       public function detail($kode_transaksi)
        {
         $transaksi = $this->transaksi_model->detail($kode_transaksi);
-        $dataTransaksi = $this->transaksi_model->listing_transaksi($kode_transaksi);
+        $dataTransaksi = $this->transaksi_model->list_transaksi($kode_transaksi);
         $data = array('title'        => 'Data Pelanggan',
                       'transaksi'    => $transaksi,
                       'dataTransaksi'=> $dataTransaksi,
@@ -321,8 +321,12 @@ class Transaksi extends CI_Controller {
         $tgltransaksi = $this->transaksi_model->listing_transaksi($kode_transaksi);
         $transaksipelanggan = $this->transaksi_model->listing_transaksi($kode_transaksi);
         $transaksi     = $this->transaksi_model->listing_transaksi($kode_transaksi);
+        $pembayaran     = $this->transaksi_model->pembayaran($kode_transaksi);
+        $dataTransaksi = $this->transaksi_model->list_transaksi($kode_transaksi);
         $data = array(  'title'              => 'Cetak Transaksi',
                         'transaksi'          => $transaksi,
+                        'pembayaran'          => $pembayaran,
+                        'dataTransaksi'      => $dataTransaksi,
                         'tgltransaksi'       => $tgltransaksi,
                         'transaksipelanggan' => $transaksipelanggan,
                     );
@@ -365,6 +369,47 @@ class Transaksi extends CI_Controller {
              return $this->upload->data("file_name");
          }
          return "default.jpg";
+     }
+
+     public function laporanpenjualan()
+     {
+        
+        $tahun= $this->transaksi_model->gettahun();
+        $data = array(  'title'              => 'Laporan Data penjualan',
+                        'tahun'          => $tahun,
+                    );
+        $this->load->view('admin/transaksi/report_penjualan', $data, FALSE);
+     }
+ 
+     public function laporanbybulan()
+     {
+         $data['title'] = "Laporan Dari Bulan";
+         // user data
+ 
+         $tahun1 = htmlspecialchars($this->input->post('tahun1', true));
+         $bulanawal1 = htmlspecialchars($this->input->post('bulanawal1', true));
+         $bulanakhir = htmlspecialchars($this->input->post('bulanakhir', true));
+ 
+         $data['bybulan'] = $this->m_penjualan->filterbybulan($tahun1, $bulanawal1, $bulanakhir);
+         $data['sum'] = $this->m_penjualan->sumbulan($tahun1, $bulanawal1, $bulanakhir);
+         $data['tahun'] = $tahun1;
+         $data['bulanawal'] = $bulanawal1;
+         $data['bulanakhir'] = $bulanakhir;
+         $this->load->view('report/laporan_by_bulan_penjualan', $data);
+         
+     }
+ 
+     public function laporanbytahun()
+     {
+         $data['title'] = "Laporan Dari Tahun";
+         // user data
+ 
+         $tahun2 = htmlspecialchars($this->input->post('tahun2', true));
+ 
+         $data['bytahun'] = $this->m_penjualan->filterbytahun($tahun2);
+         $data['sum'] = $this->m_penjualan->sum($tahun2);
+         $data['tahun'] = $tahun2;
+         $this->load->view('report/laporan_by_tahun_penjualan', $data);
      }
     
 }

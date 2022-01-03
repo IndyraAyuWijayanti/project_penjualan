@@ -75,6 +75,45 @@ class Transaksi_model extends CI_Model{
         $this->db->where('transaksi.kode_transaksi', $kode_transaksi);
 
         //END JOIN
+        $this->db->group_by('transaksi.kode_transaksi');
+        $this->db->order_by('transaksi.kode_transaksi', 'asc');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function pembayaran($kode_transaksi)
+    {
+        $this->db->select(' transaksi.*, bank.*, produk.*, detail_transaksi.*');
+        $this->db->from('transaksi');
+
+        //JOIN
+        $this->db->join('detail_transaksi', 'detail_transaksi.kode_transaksi = transaksi.kode_transaksi', );
+        $this->db->join('produk', 'produk.id_produk = detail_transaksi.id_produk');
+        $this->db->join('bank', 'bank.id_bank = transaksi.id_bank');
+      
+        $this->db->where('transaksi.kode_transaksi', $kode_transaksi);
+
+        //END JOIN
+        $this->db->group_by('transaksi.kode_transaksi');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function list_transaksi($kode_transaksi)
+    {
+        $this->db->select(' transaksi.*, users.*, pelanggan.nama_pelanggan, bank.*, produk.*, detail_transaksi.*');
+        $this->db->from('transaksi');
+
+        //JOIN
+        $this->db->join('users', 'users.id_user = transaksi.id_user');
+        $this->db->join('pelanggan', 'pelanggan.id_pelanggan = transaksi.id_pelanggan');
+        $this->db->join('detail_transaksi', 'detail_transaksi.kode_transaksi = transaksi.kode_transaksi', );
+        $this->db->join('produk', 'produk.id_produk = detail_transaksi.id_produk');
+        $this->db->join('bank', 'bank.id_bank = transaksi.id_bank');
+      
+        $this->db->where('transaksi.kode_transaksi', $kode_transaksi);
+
+        //END JOIN
         $this->db->order_by('transaksi.kode_transaksi', 'asc');
         $query = $this->db->get();
         return $query->result();
@@ -142,7 +181,7 @@ class Transaksi_model extends CI_Model{
 
         //END JOIN
         // $this->db->group_by('transaksi.id_pelanggan');
-        // $this->db->group_by('transaksi.id_bank');
+        $this->db->group_by('transaksi.kode_transaksi');
         $this->db->order_by('kode_transaksi', 'asc');
         $query = $this->db->get();
         return $query->result();

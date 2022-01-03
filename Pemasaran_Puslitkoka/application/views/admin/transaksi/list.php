@@ -24,9 +24,8 @@ if ($this->session->flashdata('sukses')) {
             <th>TANGGAL TRANSAKSI</th>
             <th>KODE TRANSAKSI</th>
             <th>PELANGGAN</th>
-            <th>PRODUK</th>
-            <th>JUMLAH ITEM</th>
-            <!-- <th>STATUS PEMBAYARAN</th> -->
+            <th>JENIS PEMBAYARAN</th>
+            <th>STATUS PEMBAYARAN</th>
             <th width="25%">ACTION</th>
         </tr>
     </thead>
@@ -38,10 +37,23 @@ if ($this->session->flashdata('sukses')) {
             <td><?= $transaksi->tanggal_transaksi ?></td>
             <td><?= $transaksi->kode_transaksi ?></td>
             <td><?= $transaksi->nama_pelanggan ?></td>
-
-            <td><?= $transaksi->nama_produk?></td>
-            <td><?= $transaksi->jumlah ?></td>
-            <!-- <td><?= $transaksi->status_pembayaran?></td> -->
+            <td> <?php if ($transaksi->id_jenis_pembayaran == '1') { ?>
+                <span>Cash</span>
+                <?php } elseif ($transaksi->id_jenis_pembayaran== '2') { ?>
+                <span>Kredit Bulanan</span>
+                <?php } ?>
+            </td>
+            <td>
+                <?php if ($transaksi->id_jenis_pembayaran == '1') { ?>
+                <?php if ($transaksi->total == $transaksi->bayar) { ?>
+                <span>Lunas</span>
+                <?php } else { ?>
+                <span>Belum Lunas</span>
+                <?php } ?>
+                <?php } elseif ($transaksi->id_jenis_pembayaran== '2') { ?>
+                <span>Angsuran</span>
+                <?php } ?>
+            </td>
 
             <td>
                 <div class="btn-group">
