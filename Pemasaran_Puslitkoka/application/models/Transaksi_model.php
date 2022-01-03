@@ -24,7 +24,7 @@ class Transaksi_model extends CI_Model{
 
 
   function kode(){
-    $q = $this->db->query("SELECT MAX(RIGHT(kode_transaksi,2)) AS kd_max FROM transaksi WHERE DATE(tanggal_transaksi)=CURDATE()");
+    $q = $this->db->query("SELECT MAX(RIGHT(kode_transaksi,3)) AS kd_max FROM transaksi WHERE MONTH(tanggal_transaksi)");
     $kd = "";
     if($q->num_rows()>0){
         foreach($q->result() as $k){
@@ -32,7 +32,7 @@ class Transaksi_model extends CI_Model{
             $kd = sprintf("%03s", $tmp);
         }
     }else{
-        $kd = "01";
+        $kd = "001";
     }
     date_default_timezone_set('Asia/Jakarta');
     return 'DO'.date('my').'-'.$kd;
@@ -201,6 +201,32 @@ class Transaksi_model extends CI_Model{
 		$query = $this->db->update($this->_table);
 		return $query;
 	}
+
+    function gettahun()
+    {
+        $query = $this->db->query("SELECT YEAR(tanggal_transaksi) AS tahun FROM transaksi GROUP BY YEAR(tanggal_transaksi) ORDER BY YEAR(tanggal_transaksi) ASC");
+        return $query->result();
+    }
+    
+    function filterbybulan($tahun1, $bulanawal, $bulanakhir)
+    {
+        $query = $this->db->query("SELECT a.* , b.* , c.* from transaksi a
+        join users
+        join detail_transaksi b on a.kode_transaksi=b.kode_transaksi 
+        join produk c on b.id_produk=c.id_produk 
+        where YEAR(a.tanggal_transaksi) = '$tahun1' and MONTH(a.tanggal_transaksi) 
+        BETWEEN '$bulanawal' and '$bulanakhir' ORDER BY a.tanggal_transaksi ASC");
+        return $query->result();
+    }
+
+    function filterbytahun($tahun2)
+    {
+        $query = $this->db->query("SELECT a.* , b.* , c.* from transaksi a 
+        join detail_transaksi b on a.kode_transaksi=b.kode_transaksi 
+        join produk c on b.id_produk=c.id_produk 
+        where YEAR(a.tanggal_transaksi) = '$tahun2' ORDER BY a.tanggal_transaksi ASC");
+        return $query->result();
+    }
 }
 
 ?>
