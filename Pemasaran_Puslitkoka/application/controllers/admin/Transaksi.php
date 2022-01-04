@@ -410,7 +410,7 @@ class Transaksi extends CI_Controller {
          $tahun1 = htmlspecialchars($this->input->post('tahun1', true));
          $bulanawal1 = htmlspecialchars($this->input->post('bulanawal1', true));
          $bulanakhir = htmlspecialchars($this->input->post('bulanakhir', true));
- 
+         
          $data['bybulan'] = $this->transaksi_model->filterbybulan($tahun1, $bulanawal1, $bulanakhir);
          $data['sum'] = $this->transaksi_model->sumbulan($tahun1, $bulanawal1, $bulanakhir);
          $data['tahun'] = $tahun1;

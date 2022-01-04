@@ -280,23 +280,48 @@ class Transaksi_model extends CI_Model{
     
     function filterbybulan($tahun1, $bulanawal, $bulanakhir)
     {
-        $query = $this->db->query("SELECT a.* , b.* , c.* from transaksi a
-        join users
+        $query = $this->db->query("SELECT a.* , b.* , c.*, d.* ,a.alamat_pengiriman as pengiriman from transaksi a
         join detail_transaksi b on a.kode_transaksi=b.kode_transaksi 
         join produk c on b.id_produk=c.id_produk 
+        join pelanggan d on d.id_pelanggan=a.id_pelanggan
         where YEAR(a.tanggal_transaksi) = '$tahun1' and MONTH(a.tanggal_transaksi) 
-        BETWEEN '$bulanawal' and '$bulanakhir' ORDER BY a.tanggal_transaksi ASC");
+        BETWEEN '$bulanawal' and '$bulanakhir' Group BY a.kode_transaksi ASC");
         return $query->result();
     }
 
     function filterbytahun($tahun2)
     {
-        $query = $this->db->query("SELECT a.* , b.* , c.* from transaksi a 
+        $query = $this->db->query("SELECT a.* , b.* , c.*, d.* ,a.alamat_pengiriman as pengiriman from transaksi a
         join detail_transaksi b on a.kode_transaksi=b.kode_transaksi 
         join produk c on b.id_produk=c.id_produk 
-        where YEAR(a.tanggal_transaksi) = '$tahun2' ORDER BY a.tanggal_transaksi ASC");
+        join pelanggan d on d.id_pelanggan=a.id_pelanggan
+        where YEAR(a.tanggal_transaksi) = '$tahun2' Group BY a.kode_transaksi ASC");
         return $query->result();
     }
+    // function filterbybulan($tahun1, $bulanawal, $bulanakhir)
+    // {
+    //     $query = $this->db->query("SELECT a.* , b.* , c.*, d.*,
+    //     SUM(e.bayar) as totalbayar from transaksi a
+    //     join detail_transaksi b on a.kode_transaksi=b.kode_transaksi 
+    //     join angsuran e on e.kode_transaksi=a.kode_transaksi 
+    //     join produk c on b.id_produk=c.id_produk 
+    //     join pelanggan d on d.id_pelanggan=a.id_pelanggan
+    //     where YEAR(a.tanggal_transaksi) = '$tahun1' and MONTH(a.tanggal_transaksi) 
+    //     BETWEEN '$bulanawal' and '$bulanakhir' ORDER BY a.tanggal_transaksi ASC");
+    //     return $query->result();
+    // }
+
+    // function filterbytahun($tahun2)
+    // {
+    //     $query = $this->db->query("SELECT a.* , b.* , c.*, d.* , e.*,
+    //     SUM(e.bayar) as totalbayar from transaksi a
+    //     join detail_transaksi b on a.kode_transaksi=b.kode_transaksi 
+    //     join angsuran e on e.kode_transaksi=a.kode_transaksi 
+    //     join produk c on b.id_produk=c.id_produk 
+    //     join pelanggan d on d.id_pelanggan=a.id_pelanggan
+    //     where YEAR(a.tanggal_transaksi) = '$tahun2' ORDER BY a.tanggal_transaksi ASC");
+    //     return $query->result();
+    // }
     
 	function sumbulan($tahun1, $bulanawal, $bulanakhir)
     {
