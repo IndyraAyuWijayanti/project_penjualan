@@ -227,7 +227,7 @@ class Pelanggan extends CI_Controller{
             if(!empty($_FILES['iupb']['name'])){
 
             $config['upload_path']    = './assets/upload/image/';
-            $config['allowed_types']  = 'gif|jpg|png|jpeg';
+            $config['allowed_types']  = 'pdf|gif|jpg|png|jpeg';
             $config['max_size']       = '2400'; //dalam kb
             $config['max_width']      = '2024';
             $config['max_height']     = '2024';
@@ -268,7 +268,7 @@ class Pelanggan extends CI_Controller{
            if(!empty($_FILES['nib']['name'])){
 
             $config['upload_path']    = './assets/upload/image/';
-            $config['allowed_types']  = 'gif|jpg|png|jpeg';
+            $config['allowed_types']  = 'pdf|gif|jpg|png|jpeg';
             $config['max_size']       = '2400'; //dalam kb
             $config['max_width']      = '2024';
             $config['max_height']     = '2024';
@@ -309,7 +309,7 @@ class Pelanggan extends CI_Controller{
                 if(!empty($_FILES['siup']['name'])){
 
                   $config['upload_path']    = './assets/upload/image/';
-                  $config['allowed_types']  = 'gif|jpg|png|jpeg';
+                  $config['allowed_types']  = 'pdf|gif|jpg|png|jpeg';
                   $config['max_size']       = '2400'; //dalam kb
                   $config['max_width']      = '2024';
                   $config['max_height']     = '2024';
@@ -350,9 +350,6 @@ class Pelanggan extends CI_Controller{
 
            
             // $this->pelanggan_model->edit($data);
-            
-          
-
 
         }
         if($bool_iupb == true && $bool_nib == true &&   $bool_siup == true){

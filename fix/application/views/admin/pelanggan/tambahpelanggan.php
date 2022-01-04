@@ -45,7 +45,7 @@
 	<label class="col-md-2 col-form-label control-label">Nama Perusahaan</label>
 	<div class="col-md-5">
 		<input type="text" name="nama_perusahaan" class="form-control" placeholder="Nama Perusahaan"
-			value="<?php echo set_value('nama_perusahaan'); ?>" required>
+			value="<?php echo set_value('nama_perusahaan'); ?>" >
 	</div>
 </div>
 
@@ -53,7 +53,7 @@
 	<label class="col-md-2 col-form-label control-label">HP</label>
 	<div class="col-md-5">
 		<input type="text" name="hp" class="form-control" placeholder="HP"
-			value="<?php echo set_value('hp'); ?>" required>
+			value="<?php echo set_value('hp'); ?>" >
 	</div>
 </div>
 
@@ -61,7 +61,7 @@
 	<label class="col-md-2 col-form-label control-label">Telepon Kantor</label>
 	<div class="col-md-5">
 		<input type="text" name="telepon_kantor" class="form-control" placeholder="Telepon Kantor"
-			value="<?php echo set_value('telepon_kantor'); ?>" required>
+			value="<?php echo set_value('telepon_kantor'); ?>" >
 	</div>
 </div>
 
@@ -69,7 +69,7 @@
 	<label class="col-md-2 col-form-label control-label">No Rekening</label>
 	<div class="col-md-5">
 		<input type="text" name="no_rekening" class="form-control" placeholder="No Rekening"
-			value="<?php echo set_value('no_rekening'); ?>" required>
+			value="<?php echo set_value('no_rekening'); ?>" >
 	</div>
 </div>
 
@@ -109,7 +109,7 @@
 <div class="form-group row">
 	<label class="col-md-2 col-form-label control-label">Upload gambar IUPB</label>
 	<div class="col-md-5">
-		<input type="file" name="iupb" class="form-control" required="required">
+		<input type="file" name="iupb" class="form-control" required="">
 	</div>
 </div>
 <div class="form-group row">

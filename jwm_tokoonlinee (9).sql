@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 04, 2022 at 02:25 AM
+-- Generation Time: Jan 04, 2022 at 09:06 AM
 -- Server version: 10.1.39-MariaDB
 -- PHP Version: 7.3.5
 
@@ -436,7 +436,7 @@ CREATE TABLE `pelanggan` (
 --
 
 INSERT INTO `pelanggan` (`id_pelanggan`, `id_user`, `id_kategoripelanggan`, `nama_pelanggan`, `password`, `telepon`, `alamat`, `tanggal_daftar`, `tanggal_update`, `no_identitas`, `nama_perusahaan`, `telepon_kantor`, `no_rekening`, `hp`, `kota`, `provinsi`, `gambar`, `alamat_pengiriman`, `keterangan`, `iupb`, `nib`, `siup`, `slug_pelanggan`, `status_pelanggan`) VALUES
-(21, 12, 4, 'Ketrinaa', '', NULL, 'blitar', '2021-12-09 02:35:14', '2021-12-09 02:35:14', '357207778889900002', 'pt indy', '112232', '11222', '0856177722', 'blitar', 'jatim', '', '', 'hutang', 'kopi13.jpg', 'kopi13.jpg', 'kopi13.jpg', '', ''),
+(21, 12, 4, 'Ketrinaa3y', '', NULL, 'blitar', '2022-01-04 07:59:49', '2022-01-04 07:59:49', '357207778889900002', 'pt indy', '112232', '11222', '0856177722', 'blitar', 'jatim', '', '', 'hutang', 'images11.png', 'kopi19.jpg', 'images12.png', 'ketrinaa3y-357207778889900002', ''),
 (22, 12, 4, 'indyraa', '', NULL, 'blitar', '2021-12-09 02:37:09', '2021-12-09 02:37:09', '357207778889900002', 'pt indy', '112232', '11222', '0856177722', 'blitar', 'jatim', '', '', 'hutang', 'iconadmin4.png', 'iconadmin4.png', 'iconadmin4.png', '', ''),
 (23, 12, 4, 'indyraa', '', NULL, 'blitar', '2021-12-09 02:48:24', '2021-12-09 02:48:24', '357207778889900002', 'pt indy', '112232', '11222', '0856177722', 'blitar', 'jatim', '', '', 'hutang', 'beranda4.png', 'beranda4.png', 'beranda4.png', '', ''),
 (24, 12, 2, 'indyraa ayu', '', NULL, 'blitar', '2021-12-09 03:00:21', '2021-12-09 03:00:21', '357207778889900002', 'pt indy', '112232', '11222', '0856177722', 'blitar', 'jatim', '', '', 'lunas', 'beranda4.png', 'beranda4.png', 'beranda4.png', '', ''),
@@ -449,8 +449,11 @@ INSERT INTO `pelanggan` (`id_pelanggan`, `id_user`, `id_kategoripelanggan`, `nam
 (32, 12, 4, 'luluk', '', NULL, 'blitar', '2021-12-19 15:59:18', '2021-12-19 15:59:18', '357207778889900001', 'pt indy', '112232', '11222', '08977655448', 'blitar', 'jatim', '', '', 'lunas', 'puslit1.png', 'puslit1.png', 'puslit1.png', '', ''),
 (33, 12, 5, 'lili', '', NULL, 'blitar', '2021-12-19 16:02:24', '2021-12-19 16:02:24', '357207778889900009', 'pt indy', '112232', '11222', '0856177722', 'blitar', 'jatim', '', '', 'lunas', 'puslit2.png', '', '', '', ''),
 (34, 12, 5, 'lilo', '', NULL, 'Banyuwangiww', '2021-12-21 02:43:22', '2021-12-21 02:43:22', '357207778889900002', 'pt indy', '112232', '11222', '0856177722', 'blitar', 'jatim', '', '', 'lunas', 'images4.png', 'images4.png', 'images4.png', '', ''),
-(35, 12, 5, 'eva agustin ra', '', NULL, 'blitarrr', '2022-01-04 00:49:03', '2022-01-04 00:49:03', '357207778889900002', 'pt indy', '112232', '11222', '0856177722', 'blitarrr', 'jatimm', '', '', 'lunass', 'kopi35.jpg', 'images18.png', 'iconadmin20.png', 'eva-agustin-ra-357207778889900002', ''),
-(36, 12, 5, 'eva agustin ra', '', NULL, 'ok', '2022-01-04 00:52:51', '2022-01-04 00:52:51', '357207778889900007', 'pt indy', '112232', 'ok', '0856177722', 'blitar', 'jatimm', '', '', 'hutang', 'kopi36.jpg', 'png-clipart-circled-home-icon-icons-logos-emojis-home-icons.png', 'kopi37.jpg', 'eva-agustin-ra-357207778889900007', '');
+(35, 0, 5, 'eva agustin ra', '', NULL, 'blitarrr', '2022-01-04 04:25:34', '2022-01-04 04:25:34', '357207778889900002', 'pt indy', '112232', '11222', '0856177722', 'blitarrr', 'jatimm', '', '', 'lunass', 'Cetak_Transaksi.pdf', 'iconadmin10.png', 'kopi17.jpg', 'eva-agustin-ra-357207778889900002', ''),
+(36, 12, 5, 'eva agustin ra', '', NULL, 'ok', '2022-01-04 00:52:51', '2022-01-04 00:52:51', '357207778889900007', 'pt indy', '112232', 'ok', '0856177722', 'blitar', 'jatimm', '', '', 'hutang', 'kopi36.jpg', 'png-clipart-circled-home-icon-icons-logos-emojis-home-icons.png', 'kopi37.jpg', 'eva-agustin-ra-357207778889900007', ''),
+(37, 12, 5, 'indyraa qq', '', NULL, 'blitar', '2022-01-04 08:02:54', '2022-01-04 08:02:54', '357207778889900005', '', '', '', '', 'blitar', 'jatim', '', '', '', '', '', '', '', ''),
+(38, 12, 5, 'indyraa qq', '', NULL, 'blitar', '2022-01-04 08:03:58', '2022-01-04 08:03:58', '357207778889900005', '', '', '', '', 'blitar', 'jatim', '', '', '', '', '', '', '', ''),
+(39, 12, 5, 'indyraa qq', '', NULL, 'blitar', '2022-01-04 08:04:23', '2022-01-04 08:04:23', '357207778889900005', '', '', '', '', 'blitar', 'jatim', '', '', 'lunas', 'beranda26.png', 'kopi20.jpg', 'images13.png', '', '');
 
 -- --------------------------------------------------------
 
@@ -560,18 +563,22 @@ CREATE TABLE `users` (
   `username` varchar(32) NOT NULL,
   `password` varchar(64) NOT NULL,
   `akses_level` varchar(20) NOT NULL,
-  `tanggal_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `tanggal_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `is_active` enum('Y','N') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id_user`, `nama`, `email`, `username`, `password`, `akses_level`, `tanggal_update`) VALUES
-(10, 'admin', 'indyra.wijayanti@gmail.com', 'indyra12', '5e9795e3f3ab55e7790a6283507c085db0d764fc', 'Admin', '2021-11-15 01:17:16'),
-(11, 'indy', 'indy@gmail.com', 'indy123', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Admin', '2021-11-10 07:13:41'),
-(12, 'admin', 'admin@gmail.com', 'admin1', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'Admin', '2021-11-10 07:14:52'),
-(13, 'eva', 'eva@gmail.com', 'eva123', '0050a3a1ab3d2530b34577213a85f11e8add3b42', 'Admin', '2021-11-15 01:16:49');
+INSERT INTO `users` (`id_user`, `nama`, `email`, `username`, `password`, `akses_level`, `tanggal_update`, `is_active`) VALUES
+(10, 'admin', 'indyra.wijayanti@gmail.com', 'indyra12', '5e9795e3f3ab55e7790a6283507c085db0d764fc', 'Admin', '2021-11-15 01:17:16', 'Y'),
+(11, 'indy', 'indy@gmail.com', 'indy123', '21232f297a57a5a743894a0e4a801fc3', 'Admin', '2022-01-04 03:23:31', 'N'),
+(12, 'admin', 'admin@gmail.com', 'admin1', '21232f297a57a5a743894a0e4a801fc3', 'Admin', '2022-01-04 03:18:08', 'Y'),
+(13, 'eva', 'eva@gmail.com', 'eva123', '0050a3a1ab3d2530b34577213a85f11e8add3b42', 'Admin', '2021-11-15 01:16:49', 'Y'),
+(15, 'indyra ayu', 'indyra.wijayanti@gmail.com', 'admin12', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'User', '2022-01-04 03:25:35', 'Y'),
+(16, 'eva', 'indy@gmail.com', 'admin8', '7b2e9f54cdff413fcde01f330af6896c3cd7e6cd', 'User', '2022-01-04 03:27:46', 'Y'),
+(17, 'indy', 'indy@gmail.com', 'indyra123', '21232f297a57a5a743894a0e4a801fc3', 'User', '2022-01-04 03:34:53', 'Y');
 
 --
 -- Indexes for dumped tables
@@ -695,7 +702,7 @@ ALTER TABLE `angsuran`
 -- AUTO_INCREMENT for table `bank`
 --
 ALTER TABLE `bank`
-  MODIFY `id_bank` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_bank` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `berita`
@@ -749,13 +756,13 @@ ALTER TABLE `kota`
 -- AUTO_INCREMENT for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `rekening`
@@ -767,7 +774,7 @@ ALTER TABLE `rekening`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables

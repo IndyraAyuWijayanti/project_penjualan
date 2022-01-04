@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title><?= $title ?></title>
+  <title>Welcome Administrator</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -22,7 +21,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="<?= base_url() ?>"><b><?= $title ?></b></a>
+    <a href="<?= base_url() ?>"><b> Welcome Administrator </b></a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
@@ -49,11 +48,11 @@ if($this->session->flashdata('sukses')) {
 }
 
 //form open login
-echo form_open(base_url('login'));
+echo form_open(base_url('login/proses_login'));
 ?>
 
         <div class="input-group mb-3">
-          <input type="text" name="username" class="form-control" placeholder="Username">
+          <input type="text" name="username" class="form-control" placeholder="Username" required="required">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -61,7 +60,7 @@ echo form_open(base_url('login'));
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" name="password" class="form-control" placeholder="Password">
+          <input type="password" name="password" class="form-control" placeholder="Password" required="required">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>

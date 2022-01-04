@@ -57,7 +57,9 @@
 		</tr>
 		<tr>
 			<th width="20%">IUPB</th>
-			<td><?php echo $pelanggan->iupb ?></td>
+			<!-- <td><?php// echo $pelanggan->iupb ?></td> -->
+
+			<td class="dokumen"><a href="<?= base_url('./assets/upload/image/thumbs/' .$pelanggan->iupb) ?>" target="_blank"><?= $pelanggan->iupb ?></a></td>
 
 		</tr>
 	

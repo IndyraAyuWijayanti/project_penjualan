@@ -7,13 +7,16 @@
        <span class="brand-text font-weight-light"><font size="5px", color="white", ><b>ICCRI </b></font></span>
     </a>
 
+
+    <?php if ($this->session->userdata('akses_level')== "Admin") { ?>
+
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user (optional) -->
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
@@ -32,7 +35,6 @@
               <p>BERITA</p>
             </a>
           </li> -->
-
 
                 <!-- MENU USER -->
                 <li class="nav-item has-treeview">
@@ -162,6 +164,94 @@
 
                     </ul>
                 </li>
+
+<?php } else if ($this->session->userdata('akses_level')== "User") { ?>
+
+<!-- Sidebar -->
+ <div class="sidebar">
+        <!-- Sidebar user (optional) -->
+       <!-- Sidebar Menu -->
+        <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+
+                <!-- MENU DASHBOARD -->
+                <li class="nav-item">
+                    <a href="<?= base_url('admin/dasbor') ?>" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt text-aqua"></i>
+                        <p>DASHBOARD</p>
+                    </a>
+                </li>
+
+                 <!-- MENU Pelanggan -->
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa fa-users"></i>
+                        <p>
+                            PELANGGAN
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= base_url('admin/pelanggan') ?>" class="nav-link">
+                                <i class="nav-icon fa fa-table"></i>
+                                <p>Data Pelanggan</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('admin/kategoripelanggan') ?>" class="nav-link">
+                                <i class="nav-icon fa fa-tags"></i>
+                                <p>Kategori Pelanggan</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                  <!-- MENU TRANSAKSI -->
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-check text-aqua"></i>
+                        <p>
+                            TRANSAKSI
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= base_url('admin/transaksi') ?>" class="nav-link">
+                                <i class="nav-icon fa fa-table"></i>
+                                <p>Data Transaksi</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('admin/transaksi/tambah') ?>" class="nav-link">
+                                <i class="nav-icon fa fa-plus"></i>
+                                <p>Tambah Transaksi</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('admin/transaksi/laporanpenjualan') ?>" class="nav-link">
+                                <i class="nav-icon fa fa-file-download"></i>
+                                <p>Laporan Transaksi</p>
+                            </a>
+                        </li>
+
+
+                       <li class="nav-item">
+                      <a href="<?= base_url('admin/transaksi/pengiriman') ?>" class="nav-link">
+                     <i class="nav-icon fas fa-shipping-fast"></i>
+                     <p>Pengiriman</p>
+                    </a>
+                   </li>
+
+                    </ul>
+                </li>
+
+
+<?php } ?>
 
 
 
