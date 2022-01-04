@@ -88,7 +88,7 @@ if ($this->session->flashdata('sukses')) {
 
         <tr>
             <td>Jumlah Bayar</td>
-            <td>: <?php echo 'Rp'.number_format($transaksi->bayar) ?></td>
+            <td>: <?php echo 'Rp'.number_format($transaksi->bayarnya) ?></td>
         </tr>
 
         <tr>

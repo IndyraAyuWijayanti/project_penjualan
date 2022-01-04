@@ -42,6 +42,7 @@ class Transaksi_model extends CI_Model{
      public function detail($kode_transaksi)
     { 
         $this->db->select(' transaksi.*, users.*,
+        transaksi.bayar as bayarnya,
         sum(angsuran.bayar) as totalbayar,angsuran.bayar,angsuran.tanggal_bayar_angsuran,angsuran.bukti_bayar as buktibayarangsuran
         ,angsuran.angsuran_ke
         , pelanggan.nama_pelanggan, bank.*, produk.*, detail_transaksi.*');
