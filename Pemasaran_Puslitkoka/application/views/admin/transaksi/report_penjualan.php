@@ -45,7 +45,7 @@
                             <option value="11">Nobember</option>
                             <option value="12">Desember</option>
                         </select><br>
-                        <button type="submit" class="btn btn-xs btn-info">Print</button>
+                        <button type="submit" class="btn btn-info">Print</button>
                     </form>
                 </div>
             </div>
@@ -67,18 +67,32 @@
                             <?php } ?>
                         </select>
                         <br>
-                        <button type="submit" class="btn btn-xs btn-info">Print</button>
+                        <button type="submit" class="btn btn-info">Print</button>
                     </form>
                 </div>
             </div>
         </div>
-        <script>
-        $(document).ready(function() {
-            $('#example').DataTable({
-                "lengthMenu": [
-                    [5, 10, 15, 20, -1],
-                    [5, 10, 15, 20, "All"]
-                ]
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Laporan Excel</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="<?= base_url('admin/transaksi/laporanexcel') ?>" method="POST" target="_blank">
+                            <button type="submit" class="btn btn-success">Export
+                                Excel</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <script>
+            $(document).ready(function() {
+                $('#example').DataTable({
+                    "lengthMenu": [
+                        [5, 10, 15, 20, -1],
+                        [5, 10, 15, 20, "All"]
+                    ]
+                });
             });
-        });
-        </script>
+            </script>

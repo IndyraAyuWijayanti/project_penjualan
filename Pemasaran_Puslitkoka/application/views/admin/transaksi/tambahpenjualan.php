@@ -273,32 +273,27 @@ $(document).ready(function() {
             harga: $('input[name="harga"]').val(),
             sub_total: $('input[name="sub_total"]').val(),
         }
-        if (parseInt($('input[name="max_hidden"]').val()) < parseInt(data_keranjang.jumlah)) {
-            alert('stok tidak tersedia! stok tersedia : ' + parseInt($('input[name="max_hidden"]')
-                .val()))
-        } else {
-            $.ajax({
-                url: url_keranjang_produk,
-                type: 'POST',
-                data: data_keranjang,
-                success: function(data) {
-                    if ($('select[name="id_produk"]').val() == data_keranjang
-                        .nama_produk) $('option[value="' + data_keranjang.nama_produk +
-                        '"]').hide()
-                    reset()
+        $.ajax({
+            url: url_keranjang_produk,
+            type: 'POST',
+            data: data_keranjang,
+            success: function(data) {
+                if ($('select[name="id_produk"]').val() == data_keranjang
+                    .nama_produk) $('option[value="' + data_keranjang.nama_produk +
+                    '"]').hide()
+                reset()
 
-                    $('table#keranjang tbody').append(data)
-                    $('tfoot').show()
+                $('table#keranjang tbody').append(data)
+                $('tfoot').show()
 
-                    $('#total').html('<strong>' + hitung_total() + '</strong>')
-                    $('input[name="total_hidden"]').val(hitung_total())
-                    document.getElementById("diskonn").defaultValue = "0"
-                    $('input[name="diskonn"]').val(0)
-                    document.getElementById("ongkirr").defaultValue = "0"
-                    $('input[name="ongkirr"]').val(0)
-                }
-            })
-        }
+                $('#total').html('<strong>' + hitung_total() + '</strong>')
+                $('input[name="total_hidden"]').val(hitung_total())
+                document.getElementById("diskonn").defaultValue = "0"
+                $('input[name="diskonn"]').val(0)
+                document.getElementById("ongkirr").defaultValue = "0"
+                $('input[name="ongkirr"]').val(0)
+            }
+        })
 
     })
 

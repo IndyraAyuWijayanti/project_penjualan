@@ -416,6 +416,8 @@ class Transaksi extends CI_Controller {
          $data['tahun'] = $tahun1;
          $data['bulanawal'] = $bulanawal1;
          $data['bulanakhir'] = $bulanakhir;
+         var_dump($data['bybulan']);
+         die;
          $this->load->view('admin/transaksi/report/laporan_by_bulan_penjualan', $data);
          
      }
@@ -431,6 +433,15 @@ class Transaksi extends CI_Controller {
          $data['sum'] = $this->transaksi_model->sum($tahun2);
          $data['tahun'] = $tahun2;
          $this->load->view('admin/transaksi/report/laporan_by_tahun_penjualan', $data);
+     }
+ 
+     public function laporanexcel()
+     {
+         $data['title'] = "Laporan Data Transaksi";
+         // user data
+ 
+         $data['excel'] = $this->transaksi_model->filterexcel();
+         $this->load->view('admin/transaksi/report/laporan_byexcel', $data);
      }
     
       //Tambah transaksi

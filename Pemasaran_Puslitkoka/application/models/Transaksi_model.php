@@ -288,6 +288,14 @@ class Transaksi_model extends CI_Model{
         BETWEEN '$bulanawal' and '$bulanakhir' Group BY a.kode_transaksi ASC");
         return $query->result();
     }
+    function filterexcel()
+    {
+        $query = $this->db->query("SELECT a.* , b.* , c.*, d.* ,a.alamat_pengiriman as pengiriman from transaksi a
+        join detail_transaksi b on a.kode_transaksi=b.kode_transaksi 
+        join produk c on b.id_produk=c.id_produk 
+        join pelanggan d on d.id_pelanggan=a.id_pelanggan Group BY a.kode_transaksi ASC");
+        return $query->result();
+    }
 
     function filterbytahun($tahun2)
     {
