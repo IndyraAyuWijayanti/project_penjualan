@@ -10,7 +10,7 @@
 			<tr class="bg-success">
 				<th>NO</th>
 				<th>NAMA</th>
-				<th>NOMOR IDENTITAS</th>
+				<th>NOMOR KTP</th>
 				<th>KATEGORI PELANGGAN</th>
 				<th>NAMA PERUSAHAAN</th>
 	            
