@@ -24,7 +24,7 @@
         <th>NAMA</th>
         <th>NOMOR IDENTITAS</th>
         <th>KATEGORI PELANGGAN</th>
-        <th>NAMA PERUSAHAAN</th>
+        <th>NAMA Kantor</th>
               
               
       </tr>
