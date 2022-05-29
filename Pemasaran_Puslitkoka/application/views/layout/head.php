@@ -81,7 +81,7 @@ $site = $this->konfigurasi_model->listing();
     .pagination b {
 
         padding: 10px 20px;
-        background-color: blue;
+        background-color: yellow;
         color: white;
         text-decoration: none;
         float: left;
